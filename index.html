@@ -332,42 +332,17 @@
 
       
         
-          
-            <p>在使用 Block 时，除了使用 __weak 修饰符避免循环引用外，还有一点经常容易忘记。苹果把它称为：“Strong-Weak Dance”。</p>
-<p>###背景<br>这是一种 强引用 –&gt; 弱引用 –&gt; 强引用 的变换过程。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">__weak MyViewController *wself = self;</span><br><span class="line">self.completionHandler = ^(NSInteger result) &#123;</span><br><span class="line">[wself.property removeObserver: wself forKeyPath:@&quot;pathName&quot;];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>这种写法可以避免循环引用，但是我们要考虑这样的问题：</p>
-<p>假设 block 被放在子线程中执行，而且执行过程中 self 在主线程被释放了。由于 wself 是一个弱引用，因此会自动变为 nil。而在 KVO 中，这会导致崩溃。</p>
-<p>解决以上问题的方法很简单，新增一行代码即可：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__weak MyViewController *wself = self;</span><br><span class="line">self.completionHandler = ^(NSInteger result) &#123;</span><br><span class="line">__strong __typeof(wself) sself = wself; // 强引用一次</span><br><span class="line">[sself.property removeObserver: sself forKeyPath:@&quot;pathName&quot;];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>这样一来，self 所指向对象的引用计数变成 2，即使主线程中的 self 因为超出作用于而释放，对象的引用计数依然为 1，避免了对象的销毁。</p>
-<p>###Q&amp;A</p>
-<ol>
-<li>Q：下面这行代码，将一个弱引用的指针赋值给强引用的指针，可以起到强引用效果么？</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__strong __typeof(wself) sself = wself;</span><br></pre></td></tr></table></figure>
-<p>A：会。引用计数描述的是对象而不是指针，sself强引用wself指向的那个对象，因此对象的引用计数加一。</p>
-<ol start="2">
-<li>Q：block 内部定义了sself，会不会因此强引用了 sself？</li>
-</ol>
-<p>A：不会。block只有捕获外部变量才会引用，具体原理可查看<a href="https://www.jianshu.com/p/ee9756f3d5f6" target="_blank" rel="noopener">霜神的这篇博客</a>。</p>
-<ol start="3">
-<li>Q：如果在 block 内部没有强引用，而是通过 if 判断，是不是也可以，比如这样写：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">__weak MyViewController *wself = self;</span><br><span class="line">wself.completionHandler = ^(NSInteger result) &#123;</span><br><span class="line">if (wself) &#123; // 只有当 wself 不为 nil 时，才执行以下代码</span><br><span class="line">[wself.property removeObserver: wself forKeyPath:@&quot;pathName&quot;];</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>A：不可以！考虑到多线程执行，也许在判断的时候，self 还没释放，但是执行 self 里面的代码时，就刚好释放了。</p>
-<ol start="4">
-<li>Q：那按照这个说法，block 内部强引用也没用啊。也许 block 执行以前，self 就释放了。</li>
-</ol>
-<p>A：有用！如果在 block 执行以前，self 就释放了，那么 block 的引用计数降为 0，所以自己就会被释放。这样它根本就不会被执行。另外，如果执行一个为 nil 的闭包会导致崩溃。</p>
-<ol start="5">
-<li>Q：如果在执行 block 的过程中，block 被释放了怎么办？<br>A：简单来说，block 还会继续执行，但是它捕获的指针会具有不确定的值。<a href="https://stackoverflow.com/questions/12272783/what-happens-when-a-block-is-set-to-nil-during-its-execution" target="_blank" rel="noopener">点我</a></li>
-</ol>
-
-          
+          <p>在使用 Block 时，除了使用 __weak 修饰符避免循环引用外，还有一点经常容易忘记。苹果把它称为：“Strong-Weak Dance”。
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/25/对Strong-Weak-Dance的思考/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
-    </div>
+    </p></div>
     
     
     
