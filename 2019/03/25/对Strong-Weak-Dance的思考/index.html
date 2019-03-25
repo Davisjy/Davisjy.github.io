@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="已是三月，却显得格外寒冷，从去年入冬以来，时不时就会看到xx公司的裁员消息，亦或裁员亦或冻结HC，甚至小红书裁员的消息都能上微博热搜。现在整个行业可能又要弥漫着996的困扰，互联网从业人员已开始变得人心惶惶，大潮退去才知道谁在裸泳，无论是企业还是个人。">
+<meta name="description" content="在使用 Block 时，除了使用 __weak 修饰符避免循环引用外，还有一点经常容易忘记。苹果把它称为：“Strong-Weak Dance”。 ###背景这是一种 强引用 –&amp;gt; 弱引用 –&amp;gt; 强引用 的变换过程。 1234__weak MyViewController *wself = self;self.completionHandler = ^(NSInteger result">
 <meta property="og:type" content="article">
-<meta property="og:title" content="三月的寒意">
-<meta property="og:url" content="http://yoursite.com/2019/03/22/年初的寒意/index.html">
+<meta property="og:title" content="对Strong-Weak Dance的思考">
+<meta property="og:url" content="http://yoursite.com/2019/03/25/对Strong-Weak-Dance的思考/index.html">
 <meta property="og:site_name" content="杂七杂八的我">
-<meta property="og:description" content="已是三月，却显得格外寒冷，从去年入冬以来，时不时就会看到xx公司的裁员消息，亦或裁员亦或冻结HC，甚至小红书裁员的消息都能上微博热搜。现在整个行业可能又要弥漫着996的困扰，互联网从业人员已开始变得人心惶惶，大潮退去才知道谁在裸泳，无论是企业还是个人。">
+<meta property="og:description" content="在使用 Block 时，除了使用 __weak 修饰符避免循环引用外，还有一点经常容易忘记。苹果把它称为：“Strong-Weak Dance”。 ###背景这是一种 强引用 –&amp;gt; 弱引用 –&amp;gt; 强引用 的变换过程。 1234__weak MyViewController *wself = self;self.completionHandler = ^(NSInteger result">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-22T06:22:57.199Z">
+<meta property="og:updated_time" content="2019-03-25T10:38:09.674Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="三月的寒意">
-<meta name="twitter:description" content="已是三月，却显得格外寒冷，从去年入冬以来，时不时就会看到xx公司的裁员消息，亦或裁员亦或冻结HC，甚至小红书裁员的消息都能上微博热搜。现在整个行业可能又要弥漫着996的困扰，互联网从业人员已开始变得人心惶惶，大潮退去才知道谁在裸泳，无论是企业还是个人。">
+<meta name="twitter:title" content="对Strong-Weak Dance的思考">
+<meta name="twitter:description" content="在使用 Block 时，除了使用 __weak 修饰符避免循环引用外，还有一点经常容易忘记。苹果把它称为：“Strong-Weak Dance”。 ###背景这是一种 强引用 –&amp;gt; 弱引用 –&amp;gt; 强引用 的变换过程。 1234__weak MyViewController *wself = self;self.completionHandler = ^(NSInteger result">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/22/年初的寒意/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/25/对Strong-Weak-Dance的思考/">
 
 
 
 
 
-  <title>三月的寒意 | 杂七杂八的我</title>
+  <title>对Strong-Weak Dance的思考 | 杂七杂八的我</title>
   
 
 
@@ -252,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/22/年初的寒意/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/25/对Strong-Weak-Dance的思考/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Davisjy">
@@ -269,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">三月的寒意</h1>
+          <h1 class="post-title" itemprop="name headline">对Strong-Weak Dance的思考</h1>
         
 
         <div class="post-meta">
@@ -281,8 +281,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T09:36:59+08:00">
-                2019-03-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-25T18:14:09+08:00">
+                2019-03-25
               </time>
             
 
@@ -300,8 +300,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/03/22/年初的寒意/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/22/年初的寒意/" itemprop="commentCount"></span>
+                <a href="/2019/03/25/对Strong-Weak-Dance的思考/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/25/对Strong-Weak-Dance的思考/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -329,28 +329,36 @@
       
 
       
-        <p>已是三月，却显得格外寒冷，从去年入冬以来，时不时就会看到xx公司的裁员消息，亦或裁员亦或冻结HC，甚至小红书裁员的消息都能上微博热搜。现在整个行业可能又要弥漫着996的困扰，互联网从业人员已开始变得人心惶惶，大潮退去才知道谁在裸泳，无论是企业还是个人。<a id="more"></a></p>
-<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>今年年初时便下定决心，想去大厂或者独角兽历练一下，(坐标帝都)现在已投简历21天，只收到一份面试邀请，让人格外泄气，甚至会怀疑自己。</p>
-<p>找朋友内推过Vipkid，度厂，爱奇艺，头条，高德，总结后发现他们都有两点要求：</p>
+        <p>在使用 Block 时，除了使用 __weak 修饰符避免循环引用外，还有一点经常容易忘记。苹果把它称为：“Strong-Weak Dance”。</p>
+<p>###背景<br>这是一种 强引用 –&gt; 弱引用 –&gt; 强引用 的变换过程。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">__weak MyViewController *wself = self;</span><br><span class="line">self.completionHandler = ^(NSInteger result) &#123;</span><br><span class="line">[wself.property removeObserver: wself forKeyPath:@&quot;pathName&quot;];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这种写法可以避免循环引用，但是我们要考虑这样的问题：</p>
+<p>假设 block 被放在子线程中执行，而且执行过程中 self 在主线程被释放了。由于 wself 是一个弱引用，因此会自动变为 nil。而在 KVO 中，这会导致崩溃。</p>
+<p>解决以上问题的方法很简单，新增一行代码即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__weak MyViewController *wself = self;</span><br><span class="line">self.completionHandler = ^(NSInteger result) &#123;</span><br><span class="line">__strong __typeof(wself) sself = wself; // 强引用一次</span><br><span class="line">[sself.property removeObserver: sself forKeyPath:@&quot;pathName&quot;];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这样一来，self 所指向对象的引用计数变成 2，即使主线程中的 self 因为超出作用于而释放，对象的引用计数依然为 1，避免了对象的销毁。</p>
+<p>###Q&amp;A</p>
 <ol>
-<li>背景光鲜</li>
-<li>学历够高</li>
+<li>Q：下面这行代码，将一个弱引用的指针赋值给强引用的指针，可以起到强引用效果么？</li>
 </ol>
-<p>然而以上两点我都不占有，并且有些迷茫。对于自己的评价，自学前端知识，积极参与移动端PC端项目配合，闲暇之余学习小程序(mpvue)和node，并编写一些接口供调试使用，买了本Python算法书在看，希望能从算法讲解带我了解这门胶水语言的魅力，个人而言不是特别优秀但执行力和自驱力还是可以的。</p>
-<p>题外话</p>
-<ul>
-<li>大学室友在深圳跟我一样的情况，从最开始分分钟找个20+的冲动，到现在开始自闭，甚至遇到了更尴尬的情况：到对方公司楼下了，hr突然回复已招到合适人选。难免内心一万匹草泥马奔腾而过。现在庆幸的是，还好没有冲动到裸辞。</li>
-</ul>
-<p>-</p>
-<h3 id="寒冬已开始，我如何面对"><a href="#寒冬已开始，我如何面对" class="headerlink" title="寒冬已开始，我如何面对"></a>寒冬已开始，我如何面对</h3><p>从去年年初的时候，兴致勃勃装了Android Studio、WebStorm，想着把Android、Weex、web前端都撸一遍，成为一个大前端工程师。开始学习新东西确实会带有很多成就感，并觉得很有意思，后来和大佬交流过后立马制止了自己的学习计划。</p>
-<p>就像此刻早已忘记那些形形色色的api。</p>
-<p>所以，如果在一个人在编码生涯的开始就选择做全栈，那么极可能成为“全能废材”，知其然而不知其所以然的程序员叫做“码农”可能更为贴切。很少有公司会需要你会写各个技术栈的代码，博而不精的程序员只适合一个地方——外包公司。</p>
-<p>那么，全栈真的没有意义么？<br>实际上是有的，当一个工程师专业技能熟练，基础技术合格，思维能力达到一定高度过后，为了寻求技术天花板的突破，很有可能会去涉猎其他技术领域。而这个涉猎并不是为了学那些表面的 API，而是去了解各个技术栈的区别和联系，注重的是思维层面的东西，从而以更广阔的角度来理解技术。<br>当我深刻的明白这些的时候，我决定以一种更有效的学习手段来从根本上提升自己，包括基础技术和思维能力。</p>
-<p>-</p>
-<h3 id="现在的我准备深入专业基础"><a href="#现在的我准备深入专业基础" class="headerlink" title="现在的我准备深入专业基础"></a>现在的我准备深入专业基础</h3><p>主要从以下方面入手：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. iOS专业领域相关(runtime,runloop,内存管理,KVC原理等)</span><br><span class="line">2. 数据结构和算法</span><br><span class="line">3. 计算机网络</span><br><span class="line">4. 操作系统和编译原理</span><br><span class="line">5. 准备捡起Swift</span><br><span class="line">6. 阅读优秀开源代码</span><br></pre></td></tr></table></figure>
-<h3 id="3-21面经"><a href="#3-21面经" class="headerlink" title="3.21面经"></a>3.21面经</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1. UIView继承关系 UIButton继承关系</span><br><span class="line">2. [给nil发送消息会崩溃吗] (https://blog.csdn.net/g_eorge/article/details/53536721)</span><br><span class="line">3. 多线程的应用</span><br><span class="line">4. [kvc](https://www.jianshu.com/p/1d39bc610a5b)和kvo原理 </span><br><span class="line">5. 控制器生命周期 </span><br><span class="line">6. cell自动高度计算 考点runloop</span><br><span class="line">7. 离屏渲染</span><br><span class="line">8. 内存优化</span><br><span class="line">9. NSString *str = @“name” 和NSString *str = [[NSString alloc] init]的区别</span><br><span class="line">10. 组件化 推荐[Casa](http://casatwy.com/iOS-Modulization.html) 和 [蘑菇](https://limboy.me/tech/2016/03/10/mgj-components.html)街两篇博文</span><br><span class="line">11. property所有修饰有哪些  weak assign</span><br><span class="line">12. 系统UIViewAnimation内的self会有相互引用吗</span><br><span class="line">13. load和initialize的区别</span><br><span class="line">14. UIImage imagewithName 和contentoffile的区</span><br><span class="line">15. 三次握手四次挥手 最后一次如果丢包怎么办</span><br><span class="line">16. 为什么tcp会有流量控制和拥塞控制</span><br><span class="line">17. get和post区别</span><br><span class="line">18. 算法相关LeetCode上刷过一些类似的</span><br></pre></td></tr></table></figure>
-<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>以后要坚持做到有输入和产出，同时希望看到本篇文章的读者能够达到自己的新年目标。加油💪</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__strong __typeof(wself) sself = wself;</span><br></pre></td></tr></table></figure>
+<p>A：会。引用计数描述的是对象而不是指针，sself强引用wself指向的那个对象，因此对象的引用计数加一。</p>
+<ol start="2">
+<li>Q：block 内部定义了sself，会不会因此强引用了 sself？</li>
+</ol>
+<p>A：不会。block只有捕获外部变量才会引用，具体原理可查看<a href="https://www.jianshu.com/p/ee9756f3d5f6" target="_blank" rel="noopener">霜神的这篇博客</a>。</p>
+<ol start="3">
+<li>Q：如果在 block 内部没有强引用，而是通过 if 判断，是不是也可以，比如这样写：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">__weak MyViewController *wself = self;</span><br><span class="line">wself.completionHandler = ^(NSInteger result) &#123;</span><br><span class="line">if (wself) &#123; // 只有当 wself 不为 nil 时，才执行以下代码</span><br><span class="line">[wself.property removeObserver: wself forKeyPath:@&quot;pathName&quot;];</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>A：不可以！考虑到多线程执行，也许在判断的时候，self 还没释放，但是执行 self 里面的代码时，就刚好释放了。</p>
+<ol start="4">
+<li>Q：那按照这个说法，block 内部强引用也没用啊。也许 block 执行以前，self 就释放了。</li>
+</ol>
+<p>A：有用！如果在 block 执行以前，self 就释放了，那么 block 的引用计数降为 0，所以自己就会被释放。这样它根本就不会被执行。另外，如果执行一个为 nil 的闭包会导致崩溃。</p>
+<ol start="5">
+<li>Q：如果在执行 block 的过程中，block 被释放了怎么办？<br>A：简单来说，block 还会继续执行，但是它捕获的指针会具有不确定的值。<a href="https://stackoverflow.com/questions/12272783/what-happens-when-a-block-is-set-to-nil-during-its-execution" target="_blank" rel="noopener">点我</a></li>
+</ol>
 
       
     </div>
@@ -375,15 +383,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/03/22/年初的寒意/" rel="next" title="三月的寒意">
+                <i class="fa fa-chevron-left"></i> 三月的寒意
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/25/对Strong-Weak-Dance的思考/" rel="prev" title="对Strong-Weak Dance的思考">
-                对Strong-Weak Dance的思考 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -438,17 +446,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -490,22 +489,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寒冬已开始，我如何面对"><span class="nav-number">2.</span> <span class="nav-text">寒冬已开始，我如何面对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#现在的我准备深入专业基础"><span class="nav-number">3.</span> <span class="nav-text">现在的我准备深入专业基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-21面经"><span class="nav-number">4.</span> <span class="nav-text">3.21面经</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后"><span class="nav-number">5.</span> <span class="nav-text">最后</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
