@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="杂七杂八的我">
 <meta property="og:description" content="在使用 Block 时，除了使用 __weak 修饰符避免循环引用外，还有一点经常容易忘记。苹果把它称为：“Strong-Weak Dance”。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-25T10:40:23.970Z">
+<meta property="og:updated_time" content="2019-03-26T02:41:37.145Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="对Strong-Weak Dance的思考">
 <meta name="twitter:description" content="在使用 Block 时，除了使用 __weak 修饰符避免循环引用外，还有一点经常容易忘记。苹果把它称为：“Strong-Weak Dance”。">
@@ -331,11 +331,11 @@
       
         <p>在使用 Block 时，除了使用 __weak 修饰符避免循环引用外，还有一点经常容易忘记。苹果把它称为：“Strong-Weak Dance”。<a id="more"></a></p>
 <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>这是一种 强引用 –&gt; 弱引用 –&gt; 强引用 的变换过程。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">__weak MyViewController *wself = self;</span><br><span class="line">self.completionHandler = ^(NSInteger result) &#123;</span><br><span class="line">[wself.property removeObserver: wself forKeyPath:@&quot;pathName&quot;];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">__weak typeof(self) wself = self;</span><br><span class="line">self.completionHandler = ^(NSInteger result) &#123;</span><br><span class="line">[wself.property removeObserver: wself forKeyPath:@&quot;pathName&quot;];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>这种写法可以避免循环引用，但是我们要考虑这样的问题：</p>
 <p>假设 block 被放在子线程中执行，而且执行过程中 self 在主线程被释放了。由于 wself 是一个弱引用，因此会自动变为 nil。而在 KVO 中，这会导致崩溃。</p>
 <p>解决以上问题的方法很简单，新增一行代码即可：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__weak MyViewController *wself = self;</span><br><span class="line">self.completionHandler = ^(NSInteger result) &#123;</span><br><span class="line">__strong __typeof(wself) sself = wself; // 强引用一次</span><br><span class="line">[sself.property removeObserver: sself forKeyPath:@&quot;pathName&quot;];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__weak typeof(self) wself = self;</span><br><span class="line">self.completionHandler = ^(NSInteger result) &#123;</span><br><span class="line">__strong __typeof(wself) sself = wself; // 强引用一次</span><br><span class="line">[sself.property removeObserver: sself forKeyPath:@&quot;pathName&quot;];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>这样一来，self 所指向对象的引用计数变成 2，即使主线程中的 self 因为超出作用于而释放，对象的引用计数依然为 1，避免了对象的销毁。</p>
 <h3 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h3><ol>
 <li>Q：下面这行代码，将一个弱引用的指针赋值给强引用的指针，可以起到强引用效果么？</li>
@@ -358,6 +358,19 @@
 <ol start="5">
 <li>Q：如果在执行 block 的过程中，block 被释放了怎么办？<br>A：简单来说，block 还会继续执行，但是它捕获的指针会具有不确定的值。<a href="https://stackoverflow.com/questions/12272783/what-happens-when-a-block-is-set-to-nil-during-its-execution" target="_blank" rel="noopener">点我</a></li>
 </ol>
+<h3 id="引申面试题"><a href="#引申面试题" class="headerlink" title="引申面试题"></a>引申面试题</h3><h4 id="执行一个为nil的block为什么会崩溃"><a href="#执行一个为nil的block为什么会崩溃" class="headerlink" title="执行一个为nil的block为什么会崩溃"></a>执行一个为nil的block为什么会崩溃</h4><p>在开发时，调用闭包我们都会先if判空，但很少问为什么</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (void)doSomething:(void(^)())finished&#123;</span><br><span class="line">    NSLog(@&quot;I am doing something...&quot;);</span><br><span class="line">    if(finished)&#123;</span><br><span class="line">        finished();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>而假如再没有判空的前提下外界直接像下面这样调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[self doSomething:nil];</span><br></pre></td></tr></table></figure>
+<p>上面的代码则会发生<strong>EXC_BAD_ACCESS</strong>崩溃信息。通常这样的崩溃原因一般就是：调用了已释放的内存空间或者重复释放某个地址空间。具体原理如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// Block在OC中的实现如下</span><br><span class="line">struct Block_layout &#123;</span><br><span class="line">    void *isa;</span><br><span class="line">    int flags;</span><br><span class="line">    int reserved;</span><br><span class="line">    void (*invoke)(void *, ...);</span><br><span class="line">    struct Block_descriptor *descriptor;</span><br><span class="line">    /* Imported variables. */</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>block是指向这个结构体的指针，invoke就是指向具体实现的函数指针。当block被调用时，程序最终会跳转到指针指向的代码区。而当block为nil时，程序会试图读取地址信息，而这个地址什么都没有，于是抛出异常。</p>
+<p>所以我们在使用block时，先去非空判断。一种优雅的方式参考<a href="http://blog.sunnyxx.com" target="_blank" rel="noopener">sunnyxx</a>的某篇博文，具体忘记了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!_block?:_block();</span><br></pre></td></tr></table></figure>
+<h4 id="给nil发消息是否会崩溃"><a href="#给nil发消息是否会崩溃" class="headerlink" title="给nil发消息是否会崩溃"></a>给nil发消息是否会崩溃</h4><p>首先，OC中向nil发消息是不会崩溃的。</p>
+<blockquote>
+<p>因为OC的函数调用都是通过objc_msgSend进行消息发送来实现的，相对于C和C++来说，对于空指针的操作会引起Crash的问题，而objc_msgSend会通过判断self来决定是否发送消息，如果self为nil，那么selector也会为空，直接返回，所以不会出现问题。视方法返回值，向nil发消息可能会返回nil(返回值为对象)、0（返回值为一些基础数据类型）或0X0（返回值为id）等。但是对[NSNull<br>null]对象发送消息时，是会crash的，因为这个NSNull类只有一个null方法。<br>当然，如果一个对象已经被释放了（引用计数为0了），那么这个时候再去调用方法肯定是会Crash的，因为这个时候这个对象就是一个野指针（指向僵尸对象（对象的引用计数为0，指针指向的内存已经不可用）的指针）了，安全的做法是释放后将对象重新置为nil，使它成为一个空指针。</p>
+</blockquote>
 
       
     </div>
@@ -507,7 +520,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-amp-A"><span class="nav-number">2.</span> <span class="nav-text">Q&amp;A</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-amp-A"><span class="nav-number">2.</span> <span class="nav-text">Q&amp;A</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引申面试题"><span class="nav-number">3.</span> <span class="nav-text">引申面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#执行一个为nil的block为什么会崩溃"><span class="nav-number">3.1.</span> <span class="nav-text">执行一个为nil的block为什么会崩溃</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#给nil发消息是否会崩溃"><span class="nav-number">3.2.</span> <span class="nav-text">给nil发消息是否会崩溃</span></a></li></ol></li></ol></div>
             
 
           </div>
