@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="杂七杂八的我">
 <meta property="og:description" content="在使用 Block 时，除了使用 __weak 修饰符避免循环引用外，还有一点经常容易忘记。苹果把它称为：“Strong-Weak Dance”。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-26T07:37:21.964Z">
+<meta property="og:updated_time" content="2019-04-01T03:11:55.029Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="对Strong-Weak Dance的思考">
 <meta name="twitter:description" content="在使用 Block 时，除了使用 __weak 修饰符避免循环引用外，还有一点经常容易忘记。苹果把它称为：“Strong-Weak Dance”。">
@@ -425,6 +425,7 @@
 <blockquote>
 <p>因为OC的函数调用都是通过objc_msgSend进行消息发送来实现的，相对于C和C++来说，对于空指针的操作会引起Crash的问题，而objc_msgSend会通过判断self来决定是否发送消息，如果self为nil，那么selector也会为空，直接返回，所以不会出现问题。视方法返回值，向nil发消息可能会返回nil(返回值为对象)、0（返回值为一些基础数据类型）或0X0（返回值为id）等。但是对[NSNull<br>null]对象发送消息时，是会crash的，因为这个NSNull类只有一个null方法。<br>当然，如果一个对象已经被释放了（引用计数为0了），那么这个时候再去调用方法肯定是会Crash的，因为这个时候这个对象就是一个野指针（指向僵尸对象（对象的引用计数为0，指针指向的内存已经不可用）的指针）了，安全的做法是释放后将对象重新置为nil，使它成为一个空指针。</p>
 </blockquote>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://juejin.im/post/5a309c2751882531ba10ed9d" target="_blank" rel="noopener">bestswifter的对 Strong-Weak Dance的思考</a></p>
 
       
     </div>
@@ -614,7 +615,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-amp-A"><span class="nav-number">2.</span> <span class="nav-text">Q&amp;A</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引申面试题"><span class="nav-number">3.</span> <span class="nav-text">引申面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#执行一个为nil的block为什么会崩溃"><span class="nav-number">3.1.</span> <span class="nav-text">执行一个为nil的block为什么会崩溃</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#给nil发消息是否会崩溃"><span class="nav-number">3.2.</span> <span class="nav-text">给nil发消息是否会崩溃</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-amp-A"><span class="nav-number">2.</span> <span class="nav-text">Q&amp;A</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引申面试题"><span class="nav-number">3.</span> <span class="nav-text">引申面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#执行一个为nil的block为什么会崩溃"><span class="nav-number">3.1.</span> <span class="nav-text">执行一个为nil的block为什么会崩溃</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#给nil发消息是否会崩溃"><span class="nav-number">3.2.</span> <span class="nav-text">给nil发消息是否会崩溃</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
