@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="杂七杂八的我">
 <meta property="og:description" content="背景用webview打开一个h5，比如长按图片时弹出系统alertVC，平时没有发现什么问题，但如果此时你webview控制器是present呈现的话，会发现奇怪的bug。alertVC__dismiss__时，控制器也会奇怪的跟着dismiss。当时看到这个情况真的是震惊了，打断点会发现调用两次dismiss(网上查到的很多是多次，不知道是如何复现的)，查看调用堆栈觉得是WKActionShe">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-10T06:45:03.681Z">
+<meta property="og:updated_time" content="2019-04-10T06:46:19.109Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WKWebview的bug">
 <meta name="twitter:description" content="背景用webview打开一个h5，比如长按图片时弹出系统alertVC，平时没有发现什么问题，但如果此时你webview控制器是present呈现的话，会发现奇怪的bug。alertVC__dismiss__时，控制器也会奇怪的跟着dismiss。当时看到这个情况真的是震惊了，打断点会发现调用两次dismiss(网上查到的很多是多次，不知道是如何复现的)，查看调用堆栈觉得是WKActionShe">
@@ -383,12 +383,12 @@
       
 
       
-        <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>用webview打开一个h5，比如长按图片时弹出系统alertVC，平时没有发现什么问题，但如果此时你webview控制器是present呈现的话，会发现奇怪的bug。alertVC__dismiss__时，控制器也会奇怪的跟着dismiss。当时看到这个情况真的是震惊了，打断点会发现调用两次dismiss(网上查到的很多是多次，不知道是如何复现的)，查看调用堆栈觉得是<strong>WKActionSheet</strong>搞的鬼。</p>
+        <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>用webview打开一个h5，比如长按图片时弹出系统alertVC，平时没有发现什么问题，但如果此时你webview控制器是present呈现的话，会发现奇怪的bug。alertVC__dismiss__时，控制器也会奇怪的跟着dismiss。当时看到这个情况真的是震惊了，打断点会发现调用两次dismiss(网上查到的很多是多次，不知道是如何复现的)，查看调用堆栈觉得是<strong>WKActionSheet</strong>搞的鬼。<a id="more"></a></p>
 <h3 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h3><h4 id="问题确定"><a href="#问题确定" class="headerlink" title="问题确定"></a>问题确定</h4><blockquote>
 <p>首先确定的是，这是一个bug，官方也已经进行修复，然而在Xcode10.2，iOS12还会出现问题，不造为什么(手动懵逼)。</p>
 </blockquote>
 <blockquote>
-<p>2018-03-12  Wenson Hsieh  <a href="mailto:&#x77;&#101;&#x6e;&#x73;&#111;&#110;&#95;&#x68;&#x73;&#x69;&#101;&#x68;&#x40;&#97;&#112;&#x70;&#108;&#x65;&#46;&#x63;&#111;&#x6d;" target="_blank" rel="noopener">&#x77;&#101;&#x6e;&#x73;&#111;&#110;&#95;&#x68;&#x73;&#x69;&#101;&#x68;&#x40;&#97;&#112;&#x70;&#108;&#x65;&#46;&#x63;&#111;&#x6d;</a><br>        REGRESSION(r211643): Dismissing WKActionSheet should not also dismiss its presenting view controller<br>        <a href="https://bugs.webkit.org/show_bug.cgi?id=183549" target="_blank" rel="noopener">https://bugs.webkit.org/show_bug.cgi?id=183549</a><br>        <a href="rdar://problem/34960698" target="_blank" rel="noopener">rdar://problem/34960698</a><br>        Reviewed by Andy Estes.<br>        Fixes the bug by dismissing the presented view controller (i.e. the action sheet or the view controller being<br>        presented during rotation) rather than the presenting view controller.<br>        Test: ActionSheetTests.DismissingActionSheetShouldNotDismissPresentingViewController</p>
+<p>2018-03-12  Wenson Hsieh  <a href="mailto:&#x77;&#x65;&#x6e;&#115;&#111;&#110;&#x5f;&#104;&#115;&#x69;&#101;&#x68;&#64;&#x61;&#112;&#x70;&#108;&#x65;&#x2e;&#x63;&#x6f;&#109;" target="_blank" rel="noopener">&#x77;&#x65;&#x6e;&#115;&#111;&#110;&#x5f;&#104;&#115;&#x69;&#101;&#x68;&#64;&#x61;&#112;&#x70;&#108;&#x65;&#x2e;&#x63;&#x6f;&#109;</a><br>        REGRESSION(r211643): Dismissing WKActionSheet should not also dismiss its presenting view controller<br>        <a href="https://bugs.webkit.org/show_bug.cgi?id=183549" target="_blank" rel="noopener">https://bugs.webkit.org/show_bug.cgi?id=183549</a><br>        <a href="rdar://problem/34960698" target="_blank" rel="noopener">rdar://problem/34960698</a><br>        Reviewed by Andy Estes.<br>        Fixes the bug by dismissing the presented view controller (i.e. the action sheet or the view controller being<br>        presented during rotation) rather than the presenting view controller.<br>        Test: ActionSheetTests.DismissingActionSheetShouldNotDismissPresentingViewController</p>
 <pre><code>* UIProcess/ios/WKActionSheet.mm:
 (-[WKActionSheet doneWithSheet:]):
 </code></pre></blockquote>
