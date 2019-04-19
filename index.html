@@ -385,56 +385,23 @@
 
       
         
-          
-            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>总结本篇博客内容：</p>
+          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>总结本篇博客内容：</p>
 <ol>
 <li>串行并发的基本概念</li>
 <li>同步异步的基本概念</li>
 <li>死锁的必要条件</li>
 <li>同步(串行\并发)队列是否会创建新的子线程执行</li>
-<li>异步(串行\并发)队列是否会创建新的子线程执行</li>
-</ol>
-<h3 id="串行-amp-并发（队列）"><a href="#串行-amp-并发（队列）" class="headerlink" title="串行&amp;并发（队列）"></a>串行&amp;并发（队列）</h3><h4 id="串行队列"><a href="#串行队列" class="headerlink" title="串行队列"></a>串行队列</h4><blockquote>
-<p>串行队列：比如这里的dispatch_get_main_queue。这个队列中所有任务，一定按照FIFO(先来后到的顺序)执行。不仅如此，还可以保证在执行某个任务时，在它前面进入队列的所有任务肯定执行完了。对于每一个不同的串行队列，系统会为这个队列建立唯一的线程来执行代码。</p>
-</blockquote>
-<h4 id="并发队列"><a href="#并发队列" class="headerlink" title="并发队列"></a>并发队列</h4><blockquote>
-<p>比如使用dispatch_get_global_queue。这个队列中的任务也是按照FIFO(先来后到的顺序)开始执行，注意是开始，但是它们的执行结束时间是不确定的，取决于每个任务的耗时。异步并发队列中的任务：GCD会动态分配多条线程来执行。具体几条线程取决于当前内存使用状况，线程池中线程数等因素。</p>
-</blockquote>
-<h3 id="同步-amp-异步"><a href="#同步-amp-异步" class="headerlink" title="同步&amp;异步"></a>同步&amp;异步</h3><h4 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h4><blockquote>
-<p>同步执行：比如这里的dispatch_sync，这个函数会把一个block加入到指定的队列中，而且会一直等到执行完blcok，这个函数才返回。因此在block执行完之前，调用dispatch_sync方法的线程是阻塞的。</p>
-</blockquote>
-<h4 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h4><blockquote>
-<p>异步执行：一般使用dispatch_async，这个函数也会把一个block加入到指定的队列中，但是和同步执行不同的是，这个函数把block加入队列后不等block的执行就立刻返回了。</p>
-</blockquote>
-<h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><blockquote>
-<p>所谓死锁，通常指有两个线程T1和T2都卡住了，并等待对方完成某些操作。T1不能完成是因为它在等待T2完成。但T2也不能完成，因为它在等待T1完成。于是大家都完不成，就导致了死锁（DeadLock）。</p>
-</blockquote>
-<h4 id="死锁的必要条件"><a href="#死锁的必要条件" class="headerlink" title="死锁的必要条件"></a>死锁的必要条件</h4><blockquote>
-<ol>
-<li>互斥条件：一个资源每次只能被一个进程使用。</li>
-<li>请求与保持条件：一个进程因请求资源而阻塞时，对已获得的资源保持不放。</li>
-<li>不剥夺条件:进程已获得的资源，在末使用完之前，不能强行剥夺。</li>
-<li>循环等待条件:若干进程之间形成一种头尾相接的循环等待资源关系。</li>
-</ol>
-</blockquote>
-<h5 id="经典的死锁代码"><a href="#经典的死锁代码" class="headerlink" title="经典的死锁代码"></a>经典的死锁代码</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        dispatch_sync(dispatch_get_main_queue(), ^(void)&#123;</span><br><span class="line">            NSLog(@&quot;这里死锁了&quot;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h5><p>首先明确的是：执行这个dispatch_get_main_queue队列的是主线程。执行了dispatch_sync函数后，将block添加到了main_queue中，同时调用dispatch_syn这个函数的线程（也就是主线程）被阻塞，等待block执行完成，而执行主线程队列任务的线程正是主线程，此时他处于阻塞状态，所以block永远不会被执行，因此主线程一直处于阻塞状态。因此这段代码运行后，并非卡在block中无法返回，而是根本无法执行到这个block。</p>
-<h3 id="验证是否会开辟子线程执行任务"><a href="#验证是否会开辟子线程执行任务" class="headerlink" title="验证是否会开辟子线程执行任务"></a>验证是否会开辟子线程执行任务</h3><h4 id="异步串行队列"><a href="#异步串行队列" class="headerlink" title="异步串行队列"></a>异步串行队列</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">dispatch_queue_t que = dispatch_queue_create(&quot;com.my&quot;, DISPATCH_QUEUE_SERIAL);</span><br><span class="line">for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">        dispatch_async(que, ^&#123;</span><br><span class="line">            if ([NSThread isMainThread]) &#123;</span><br><span class="line">                NSLog(@&quot;是&quot;);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                NSLog(@&quot;不是&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            NSLog(@&quot;%@&quot;, [NSThread currentThread]);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    // 具体的log就不贴出了，可直接复制代码运行查看</span><br></pre></td></tr></table></figure>
-<h4 id="异步并发队列"><a href="#异步并发队列" class="headerlink" title="异步并发队列"></a>异步并发队列</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dispatch_queue_t que = dispatch_queue_create(&quot;com.my&quot;, DISPATCH_QUEUE_CONCURRENT);</span><br></pre></td></tr></table></figure>
-<h4 id="同步串行队列"><a href="#同步串行队列" class="headerlink" title="同步串行队列"></a>同步串行队列</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">dispatch_queue_t que = dispatch_queue_create(&quot;com.my&quot;, DISPATCH_QUEUE_SERIAL);</span><br><span class="line">for (int i = 0; i &lt; 20; i++) &#123;</span><br><span class="line">        dispatch_sync(que, ^&#123;</span><br><span class="line">            if ([NSThread isMainThread]) &#123;</span><br><span class="line">                NSLog(@&quot;是&quot;);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                NSLog(@&quot;不是&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            NSLog(@&quot;%@&quot;, [NSThread currentThread]);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="同步并发队列"><a href="#同步并发队列" class="headerlink" title="同步并发队列"></a>同步并发队列</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dispatch_queue_t que = dispatch_queue_create(&quot;com.my&quot;, DISPATCH_QUEUE_CONCURRENT);</span><br></pre></td></tr></table></figure>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
-<li>异步并发队列会根据当前环境和线程池状态另开辟多个子线程执行</li>
-<li>异步串行队列会创建一个子线程执行队列任务</li>
-<li>同步串行队列不会创建子线程执行</li>
-<li>同步并发队列不会创建子线程执行</li>
-<li>⭐️在某一个串行队列中，同步的向这个串行队列添加任务会产生死锁</li>
-</ol>
-
-          
+<li>异步(串行\并发)队列是否会创建新的子线程执行
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/19/基础知识拾遗-GCD串行并发/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
-    </div>
+    </li></ol></div>
     
     
     

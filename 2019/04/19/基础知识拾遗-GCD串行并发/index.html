@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="前言总结本篇博客内容：  串行并发的基本概念 同步异步的基本概念 死锁的必要条件 同步(串行\并发)队列是否会创建新的子线程执行 异步(串行\并发)队列是否会创建新的子线程执行  串行&amp;amp;并发（队列）串行队列 串行队列：比如这里的dispatch_get_main_queue。这个队列中所有任务，一定按照FIFO(先来后到的顺序)执行。不仅如此，还可以保证在执行某个任务时，在它前面进入队列的">
+<meta name="description" content="前言总结本篇博客内容：  串行并发的基本概念 同步异步的基本概念 死锁的必要条件 同步(串行\并发)队列是否会创建新的子线程执行 异步(串行\并发)队列是否会创建新的子线程执行">
 <meta name="keywords" content="多线程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基础知识拾遗-GCD串行并发">
 <meta property="og:url" content="http://yoursite.com/2019/04/19/基础知识拾遗-GCD串行并发/index.html">
 <meta property="og:site_name" content="杂七杂八的我">
-<meta property="og:description" content="前言总结本篇博客内容：  串行并发的基本概念 同步异步的基本概念 死锁的必要条件 同步(串行\并发)队列是否会创建新的子线程执行 异步(串行\并发)队列是否会创建新的子线程执行  串行&amp;amp;并发（队列）串行队列 串行队列：比如这里的dispatch_get_main_queue。这个队列中所有任务，一定按照FIFO(先来后到的顺序)执行。不仅如此，还可以保证在执行某个任务时，在它前面进入队列的">
+<meta property="og:description" content="前言总结本篇博客内容：  串行并发的基本概念 同步异步的基本概念 死锁的必要条件 同步(串行\并发)队列是否会创建新的子线程执行 异步(串行\并发)队列是否会创建新的子线程执行">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-19T06:37:31.758Z">
+<meta property="og:updated_time" content="2019-04-19T06:39:05.903Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基础知识拾遗-GCD串行并发">
-<meta name="twitter:description" content="前言总结本篇博客内容：  串行并发的基本概念 同步异步的基本概念 死锁的必要条件 同步(串行\并发)队列是否会创建新的子线程执行 异步(串行\并发)队列是否会创建新的子线程执行  串行&amp;amp;并发（队列）串行队列 串行队列：比如这里的dispatch_get_main_queue。这个队列中所有任务，一定按照FIFO(先来后到的顺序)执行。不仅如此，还可以保证在执行某个任务时，在它前面进入队列的">
+<meta name="twitter:description" content="前言总结本篇博客内容：  串行并发的基本概念 同步异步的基本概念 死锁的必要条件 同步(串行\并发)队列是否会创建新的子线程执行 异步(串行\并发)队列是否会创建新的子线程执行">
 
 
 
@@ -389,7 +389,7 @@
 <li>同步异步的基本概念</li>
 <li>死锁的必要条件</li>
 <li>同步(串行\并发)队列是否会创建新的子线程执行</li>
-<li>异步(串行\并发)队列是否会创建新的子线程执行</li>
+<li>异步(串行\并发)队列是否会创建新的子线程执行<a id="more"></a></li>
 </ol>
 <h3 id="串行-amp-并发（队列）"><a href="#串行-amp-并发（队列）" class="headerlink" title="串行&amp;并发（队列）"></a>串行&amp;并发（队列）</h3><h4 id="串行队列"><a href="#串行队列" class="headerlink" title="串行队列"></a>串行队列</h4><blockquote>
 <p>串行队列：比如这里的dispatch_get_main_queue。这个队列中所有任务，一定按照FIFO(先来后到的顺序)执行。不仅如此，还可以保证在执行某个任务时，在它前面进入队列的所有任务肯定执行完了。对于每一个不同的串行队列，系统会为这个队列建立唯一的线程来执行代码。</p>
