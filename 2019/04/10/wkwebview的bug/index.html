@@ -388,7 +388,7 @@
 <p>首先确定的是，这是一个bug，官方也已经进行修复，然而在Xcode10.2，iOS12还会出现问题，不造为什么(手动懵逼)。</p>
 </blockquote>
 <blockquote>
-<p>2018-03-12  Wenson Hsieh  <a href="mailto:&#x77;&#x65;&#x6e;&#115;&#111;&#110;&#x5f;&#104;&#115;&#x69;&#101;&#x68;&#64;&#x61;&#112;&#x70;&#108;&#x65;&#x2e;&#x63;&#x6f;&#109;" target="_blank" rel="noopener">&#x77;&#x65;&#x6e;&#115;&#111;&#110;&#x5f;&#104;&#115;&#x69;&#101;&#x68;&#64;&#x61;&#112;&#x70;&#108;&#x65;&#x2e;&#x63;&#x6f;&#109;</a><br>        REGRESSION(r211643): Dismissing WKActionSheet should not also dismiss its presenting view controller<br>        <a href="https://bugs.webkit.org/show_bug.cgi?id=183549" target="_blank" rel="noopener">https://bugs.webkit.org/show_bug.cgi?id=183549</a><br>        <a href="rdar://problem/34960698" target="_blank" rel="noopener">rdar://problem/34960698</a><br>        Reviewed by Andy Estes.<br>        Fixes the bug by dismissing the presented view controller (i.e. the action sheet or the view controller being<br>        presented during rotation) rather than the presenting view controller.<br>        Test: ActionSheetTests.DismissingActionSheetShouldNotDismissPresentingViewController</p>
+<p>2018-03-12  Wenson Hsieh  <a href="mailto:&#x77;&#101;&#x6e;&#x73;&#111;&#110;&#x5f;&#x68;&#x73;&#x69;&#101;&#x68;&#x40;&#97;&#112;&#112;&#108;&#x65;&#46;&#x63;&#x6f;&#x6d;" target="_blank" rel="noopener">&#x77;&#101;&#x6e;&#x73;&#111;&#110;&#x5f;&#x68;&#x73;&#x69;&#101;&#x68;&#x40;&#97;&#112;&#112;&#108;&#x65;&#46;&#x63;&#x6f;&#x6d;</a><br>        REGRESSION(r211643): Dismissing WKActionSheet should not also dismiss its presenting view controller<br>        <a href="https://bugs.webkit.org/show_bug.cgi?id=183549" target="_blank" rel="noopener">https://bugs.webkit.org/show_bug.cgi?id=183549</a><br>        <a href="rdar://problem/34960698" target="_blank" rel="noopener">rdar://problem/34960698</a><br>        Reviewed by Andy Estes.<br>        Fixes the bug by dismissing the presented view controller (i.e. the action sheet or the view controller being<br>        presented during rotation) rather than the presenting view controller.<br>        Test: ActionSheetTests.DismissingActionSheetShouldNotDismissPresentingViewController</p>
 <pre><code>* UIProcess/ios/WKActionSheet.mm:
 (-[WKActionSheet doneWithSheet:]):
 </code></pre></blockquote>
@@ -439,6 +439,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/19/基础知识拾遗-GCD串行并发/" rel="prev" title="基础知识拾遗-GCD串行并发">
+                基础知识拾遗-GCD串行并发 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -518,7 +522,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
