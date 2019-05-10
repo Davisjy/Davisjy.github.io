@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="多线程,">
+  <meta name="keywords" content="记录周围,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="前言总结本篇博客内容：  串行并发的基本概念 同步异步的基本概念 死锁的必要条件 同步(串行\并发)队列是否会创建新的子线程执行 异步(串行\并发)队列是否会创建新的子线程执行">
-<meta name="keywords" content="多线程">
+<meta name="description" content="小纪 回头看现在才11号，但好像发生了很多事，现在的我也悄然无助。   五月初大学室友来北京了，502四巨头时隔两年再次相聚，见面当天很自然仿佛昨天就是大学时光，当然了，好像只有我被时间浇了化肥(手动黑线)。猪大哥梳着大背头和穿着大aj，是我们宿舍最潮的人啦(深圳就是不一样，手动狗头斜眼笑)，谈爸爸带着小女朋友在旁边打lol，一下回想起大学开黑的时光。当然很感谢成哥家人的热心款待，饭菜而言印象最深">
+<meta name="keywords" content="记录周围">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基础知识拾遗-GCD串行并发">
-<meta property="og:url" content="http://yoursite.com/2019/04/19/基础知识拾遗-GCD串行并发/index.html">
+<meta property="og:title" content="生活小纪">
+<meta property="og:url" content="http://yoursite.com/2019/05/11/生活小纪/index.html">
 <meta property="og:site_name" content="杂七杂八的我">
-<meta property="og:description" content="前言总结本篇博客内容：  串行并发的基本概念 同步异步的基本概念 死锁的必要条件 同步(串行\并发)队列是否会创建新的子线程执行 异步(串行\并发)队列是否会创建新的子线程执行">
+<meta property="og:description" content="小纪 回头看现在才11号，但好像发生了很多事，现在的我也悄然无助。   五月初大学室友来北京了，502四巨头时隔两年再次相聚，见面当天很自然仿佛昨天就是大学时光，当然了，好像只有我被时间浇了化肥(手动黑线)。猪大哥梳着大背头和穿着大aj，是我们宿舍最潮的人啦(深圳就是不一样，手动狗头斜眼笑)，谈爸爸带着小女朋友在旁边打lol，一下回想起大学开黑的时光。当然很感谢成哥家人的热心款待，饭菜而言印象最深">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-19T06:39:05.903Z">
+<meta property="og:updated_time" content="2019-05-10T17:00:11.971Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基础知识拾遗-GCD串行并发">
-<meta name="twitter:description" content="前言总结本篇博客内容：  串行并发的基本概念 同步异步的基本概念 死锁的必要条件 同步(串行\并发)队列是否会创建新的子线程执行 异步(串行\并发)队列是否会创建新的子线程执行">
+<meta name="twitter:title" content="生活小纪">
+<meta name="twitter:description" content="小纪 回头看现在才11号，但好像发生了很多事，现在的我也悄然无助。   五月初大学室友来北京了，502四巨头时隔两年再次相聚，见面当天很自然仿佛昨天就是大学时光，当然了，好像只有我被时间浇了化肥(手动黑线)。猪大哥梳着大背头和穿着大aj，是我们宿舍最潮的人啦(深圳就是不一样，手动狗头斜眼笑)，谈爸爸带着小女朋友在旁边打lol，一下回想起大学开黑的时光。当然很感谢成哥家人的热心款待，饭菜而言印象最深">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/19/基础知识拾遗-GCD串行并发/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/11/生活小纪/">
 
 
 
 
 
-  <title>基础知识拾遗-GCD串行并发 | 杂七杂八的我</title>
+  <title>生活小纪 | 杂七杂八的我</title>
   
 
 
@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/19/基础知识拾遗-GCD串行并发/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/11/生活小纪/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Davisjy">
@@ -290,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">基础知识拾遗-GCD串行并发</h1>
+          <h1 class="post-title" itemprop="name headline">生活小纪</h1>
         
 
         <div class="post-meta">
@@ -302,8 +302,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-19T14:13:41+08:00">
-                2019-04-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-11T00:06:51+08:00">
+                2019-05-11
               </time>
             
 
@@ -325,8 +325,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
+                  <a href="/categories/我的生活/" itemprop="url" rel="index">
+                    <span itemprop="name">我的生活</span>
                   </a>
                 </span>
 
@@ -343,8 +343,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/04/19/基础知识拾遗-GCD串行并发/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/19/基础知识拾遗-GCD串行并发/" itemprop="commentCount"></span>
+                <a href="/2019/05/11/生活小纪/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/11/生活小纪/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -352,7 +352,7 @@
 
           
           
-             <span id="/2019/04/19/基础知识拾遗-GCD串行并发/" class="leancloud_visitors" data-flag-title="基础知识拾遗-GCD串行并发">
+             <span id="/2019/05/11/生活小纪/" class="leancloud_visitors" data-flag-title="生活小纪">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -383,50 +383,26 @@
       
 
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>总结本篇博客内容：</p>
-<ol>
-<li>串行并发的基本概念</li>
-<li>同步异步的基本概念</li>
-<li>死锁的必要条件</li>
-<li>同步(串行\并发)队列是否会创建新的子线程执行</li>
-<li>异步(串行\并发)队列是否会创建新的子线程执行<a id="more"></a></li>
-</ol>
-<h3 id="串行-amp-并发（队列）"><a href="#串行-amp-并发（队列）" class="headerlink" title="串行&amp;并发（队列）"></a>串行&amp;并发（队列）</h3><h4 id="串行队列"><a href="#串行队列" class="headerlink" title="串行队列"></a>串行队列</h4><blockquote>
-<p>串行队列：比如这里的dispatch_get_main_queue。这个队列中所有任务，一定按照FIFO(先来后到的顺序)执行。不仅如此，还可以保证在执行某个任务时，在它前面进入队列的所有任务肯定执行完了。对于每一个不同的串行队列，系统会为这个队列建立唯一的线程来执行代码。</p>
+        <h3 id="小纪"><a href="#小纪" class="headerlink" title="小纪"></a>小纪</h3><blockquote>
+<p>回头看现在才11号，但好像发生了很多事，现在的我也悄然无助。</p>
 </blockquote>
-<h4 id="并发队列"><a href="#并发队列" class="headerlink" title="并发队列"></a>并发队列</h4><blockquote>
-<p>比如使用dispatch_get_global_queue。这个队列中的任务也是按照FIFO(先来后到的顺序)开始执行，注意是开始，但是它们的执行结束时间是不确定的，取决于每个任务的耗时。异步并发队列中的任务：GCD会动态分配多条线程来执行。具体几条线程取决于当前内存使用状况，线程池中线程数等因素。</p>
+<blockquote>
+<p>五月初大学室友来北京了，502四巨头时隔两年再次相聚，见面当天很自然仿佛昨天就是大学时光，当然了，好像只有我被时间浇了化肥(手动黑线)。猪大哥梳着大背头和穿着大aj，是我们宿舍最潮的人啦(深圳就是不一样，手动狗头斜眼笑)，谈爸爸带着小女朋友在旁边打lol，一下回想起大学开黑的时光。当然很感谢成哥家人的热心款待，饭菜而言印象最深的是那盘芋头，四个人一人三瓶，没多喝，下午去了奥森，从毕业到现在一个个的酒量渐长，但还是一样的你们。(本次聚会少了凯子哥和土豪智，凯子哥回去考驾照，土豪智恰好赶在订婚的时间，非常期待下一次的相聚，可能就是土豪智的婚礼了🎇)</p>
 </blockquote>
-<h3 id="同步-amp-异步"><a href="#同步-amp-异步" class="headerlink" title="同步&amp;异步"></a>同步&amp;异步</h3><h4 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h4><blockquote>
-<p>同步执行：比如这里的dispatch_sync，这个函数会把一个block加入到指定的队列中，而且会一直等到执行完blcok，这个函数才返回。因此在block执行完之前，调用dispatch_sync方法的线程是阻塞的。</p>
+<h3 id="一点小意外"><a href="#一点小意外" class="headerlink" title="一点小意外"></a>一点小意外</h3><blockquote>
+<p>25岁的我竟然在这个节骨眼出水痘了，起的时候很着急，很怕不能陪从深圳浙江大老远过来的室友，有点愧疚有点不好意思。水痘刚开始起吓坏了，没见过有点不知所措，一碰就破，不知道是水痘还以为起了不一样的青春痘，还跟室友喝酒出去玩，事后发现喝酒吹风有害，但并不后悔，如果再来一次我依然还是会跟他们一起。</p>
+<p>第二天实在是没法出门，满脸浑身都是水痘，把我自己都吓了一跳。就在家待着了，去了趟中医院开个病假证明，医生说会传染建议在家休息。</p>
+<p>出水痘伴随着发烧，有点影响心情，真是惭愧，对我亲爱的室友say sorry，别怪我就好，下次见面我先吹一瓶。</p>
 </blockquote>
-<h4 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h4><blockquote>
-<p>异步执行：一般使用dispatch_async，这个函数也会把一个block加入到指定的队列中，但是和同步执行不同的是，这个函数把block加入队列后不等block的执行就立刻返回了。</p>
+<h3 id="最近"><a href="#最近" class="headerlink" title="最近"></a>最近</h3><blockquote>
+<p>这不就在家歇了一周，不知道扣了我多少工资，心疼到扭曲了，水痘哪里都痒但也不敢抠怕留疤，索性还是睡觉吧，睡着了就不会痒了。毕竟我在程序员圈里是靠脸吃饭的😂😂😂。醒了就打农药，上了钻石，当时感觉小有成就吧，现在想想真无聊。</p>
+<p>最近去天津落户，说是10号下来结果还是没下来，哎，生活所迫不知道这条路是对是错，有点慌，哪位大佬有经验可一起探讨。</p>
 </blockquote>
-<h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><blockquote>
-<p>所谓死锁，通常指有两个线程T1和T2都卡住了，并等待对方完成某些操作。T1不能完成是因为它在等待T2完成。但T2也不能完成，因为它在等待T1完成。于是大家都完不成，就导致了死锁（DeadLock）。</p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><blockquote>
+<p>感谢我的母亲对我无微不至的照顾，感谢姑姑姑妈和亲人的关怀，在家的这几天算了吃了母亲所有的拿手青菜(因为水痘不能乱吃肉)，所以每天水果和蔬菜，也算是减肥了，结果越减越肥。</p>
+<p>刚和母亲有些争吵，世事无常，希望自己快速成长起来，让父母少一份担心多一份呵护。</p>
+<p>竟然流水账这么多了，收住，愿无悔。</p>
 </blockquote>
-<h4 id="死锁的必要条件"><a href="#死锁的必要条件" class="headerlink" title="死锁的必要条件"></a>死锁的必要条件</h4><blockquote>
-<ol>
-<li>互斥条件：一个资源每次只能被一个进程使用。</li>
-<li>请求与保持条件：一个进程因请求资源而阻塞时，对已获得的资源保持不放。</li>
-<li>不剥夺条件:进程已获得的资源，在末使用完之前，不能强行剥夺。</li>
-<li>循环等待条件:若干进程之间形成一种头尾相接的循环等待资源关系。</li>
-</ol>
-</blockquote>
-<h5 id="经典的死锁代码"><a href="#经典的死锁代码" class="headerlink" title="经典的死锁代码"></a>经典的死锁代码</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        dispatch_sync(dispatch_get_main_queue(), ^(void)&#123;</span><br><span class="line">            NSLog(@&quot;这里死锁了&quot;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h5><p>首先明确的是：执行这个dispatch_get_main_queue队列的是主线程。执行了dispatch_sync函数后，将block添加到了main_queue中，同时调用dispatch_syn这个函数的线程（也就是主线程）被阻塞，等待block执行完成，而执行主线程队列任务的线程正是主线程，此时他处于阻塞状态，所以block永远不会被执行，因此主线程一直处于阻塞状态。因此这段代码运行后，并非卡在block中无法返回，而是根本无法执行到这个block。</p>
-<h3 id="验证是否会开辟子线程执行任务"><a href="#验证是否会开辟子线程执行任务" class="headerlink" title="验证是否会开辟子线程执行任务"></a>验证是否会开辟子线程执行任务</h3><h4 id="异步串行队列"><a href="#异步串行队列" class="headerlink" title="异步串行队列"></a>异步串行队列</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">dispatch_queue_t que = dispatch_queue_create(&quot;com.my&quot;, DISPATCH_QUEUE_SERIAL);</span><br><span class="line">for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">        dispatch_async(que, ^&#123;</span><br><span class="line">            if ([NSThread isMainThread]) &#123;</span><br><span class="line">                NSLog(@&quot;是&quot;);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                NSLog(@&quot;不是&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            NSLog(@&quot;%@&quot;, [NSThread currentThread]);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    // 具体的log就不贴出了，可直接复制代码运行查看</span><br></pre></td></tr></table></figure>
-<h4 id="异步并发队列"><a href="#异步并发队列" class="headerlink" title="异步并发队列"></a>异步并发队列</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dispatch_queue_t que = dispatch_queue_create(&quot;com.my&quot;, DISPATCH_QUEUE_CONCURRENT);</span><br></pre></td></tr></table></figure>
-<h4 id="同步串行队列"><a href="#同步串行队列" class="headerlink" title="同步串行队列"></a>同步串行队列</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">dispatch_queue_t que = dispatch_queue_create(&quot;com.my&quot;, DISPATCH_QUEUE_SERIAL);</span><br><span class="line">for (int i = 0; i &lt; 20; i++) &#123;</span><br><span class="line">        dispatch_sync(que, ^&#123;</span><br><span class="line">            if ([NSThread isMainThread]) &#123;</span><br><span class="line">                NSLog(@&quot;是&quot;);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                NSLog(@&quot;不是&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            NSLog(@&quot;%@&quot;, [NSThread currentThread]);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="同步并发队列"><a href="#同步并发队列" class="headerlink" title="同步并发队列"></a>同步并发队列</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dispatch_queue_t que = dispatch_queue_create(&quot;com.my&quot;, DISPATCH_QUEUE_CONCURRENT);</span><br></pre></td></tr></table></figure>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
-<li>异步并发队列会根据当前环境和线程池状态另开辟多个子线程执行</li>
-<li>异步串行队列会创建一个子线程执行队列任务</li>
-<li>同步串行队列不会创建子线程执行</li>
-<li>同步并发队列不会创建子线程执行</li>
-<li>⭐️在某一个串行队列中，同步的向这个串行队列添加任务会产生死锁</li>
-</ol>
 
       
     </div>
@@ -444,7 +420,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/多线程/" rel="tag"># 多线程</a>
+            <a href="/tags/记录周围/" rel="tag"># 记录周围</a>
           
         </div>
       
@@ -457,8 +433,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/10/wkwebview的bug/" rel="next" title="WKWebview的bug">
-                <i class="fa fa-chevron-left"></i> WKWebview的bug
+              <a href="/2019/04/19/基础知识拾遗-GCD串行并发/" rel="next" title="基础知识拾遗-GCD串行并发">
+                <i class="fa fa-chevron-left"></i> 基础知识拾遗-GCD串行并发
               </a>
             
           </div>
@@ -466,10 +442,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/11/生活小纪/" rel="prev" title="生活小纪">
-                生活小纪 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -620,7 +592,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#串行-amp-并发（队列）"><span class="nav-number">2.</span> <span class="nav-text">串行&amp;并发（队列）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#串行队列"><span class="nav-number">2.1.</span> <span class="nav-text">串行队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#并发队列"><span class="nav-number">2.2.</span> <span class="nav-text">并发队列</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步-amp-异步"><span class="nav-number">3.</span> <span class="nav-text">同步&amp;异步</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#同步"><span class="nav-number">3.1.</span> <span class="nav-text">同步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步"><span class="nav-number">3.2.</span> <span class="nav-text">异步</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#死锁"><span class="nav-number">4.</span> <span class="nav-text">死锁</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁的必要条件"><span class="nav-number">4.1.</span> <span class="nav-text">死锁的必要条件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#经典的死锁代码"><span class="nav-number">4.1.1.</span> <span class="nav-text">经典的死锁代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分析"><span class="nav-number">4.1.2.</span> <span class="nav-text">分析</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#验证是否会开辟子线程执行任务"><span class="nav-number">5.</span> <span class="nav-text">验证是否会开辟子线程执行任务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#异步串行队列"><span class="nav-number">5.1.</span> <span class="nav-text">异步串行队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步并发队列"><span class="nav-number">5.2.</span> <span class="nav-text">异步并发队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#同步串行队列"><span class="nav-number">5.3.</span> <span class="nav-text">同步串行队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#同步并发队列"><span class="nav-number">5.4.</span> <span class="nav-text">同步并发队列</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#小纪"><span class="nav-number">1.</span> <span class="nav-text">小纪</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一点小意外"><span class="nav-number">2.</span> <span class="nav-text">一点小意外</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最近"><span class="nav-number">3.</span> <span class="nav-text">最近</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后"><span class="nav-number">4.</span> <span class="nav-text">最后</span></a></li></ol></div>
             
 
           </div>
