@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="杂七杂八的我">
 <meta property="og:description" content="前言本篇是个人在公司分享Flutter的内容，在此搬到博客上">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-25T06:59:56.128Z">
+<meta property="og:updated_time" content="2019-06-25T07:04:57.028Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="迟来的Flutter总结">
 <meta name="twitter:description" content="前言本篇是个人在公司分享Flutter的内容，在此搬到博客上">
@@ -393,7 +393,7 @@
 <h4 id="生态及社区"><a href="#生态及社区" class="headerlink" title="生态及社区"></a>生态及社区</h4><p>从Github上来看，目前Flutter活跃用户正在高速增长。从Stackoverflow上提问来看，Flutter社区现在已经很庞大。Flutter的文档、资源也越来越丰富，开发过程中遇到的很多问题都可以在Stackoverflow或其github issue中找到答案。在掘金上，Flutter 标签下有 2300 多篇文章；闲鱼团队也在主推 Flutter。关注社区的活跃度其实就是想知道会不会在短期内挂掉，从目前的状况看，我觉得可能性比较小，而它被另一个同类产品 PK 掉的可能性则更小，因此值得投入时间去了解它。</p>
 <h4 id="技术支持"><a href="#技术支持" class="headerlink" title="技术支持"></a>技术支持</h4><p>现在Google正在大力推广Flutter，Flutter的作者中很多人都是来自Chromium团队，并且github上活跃度很高。另一个角度，从今年上半年Flutter频繁的版本发布也可以看出Google对Flutter的投入的资源不小，所以在官方技术支持这方面，大可不必担心。</p>
 <h4 id="开发效率"><a href="#开发效率" class="headerlink" title="开发效率"></a>开发效率</h4><p>Flutter的热重载可帮助开发者快速地进行测试、构建UI、添加功能并更快地修复错误。在iOS和Android模拟器或真机上可以实现毫秒级热重载，并且不会丢失状态。</p>
-<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>个人认为技术发展到一定程度就会衍生出新的方向，比如后端高并发，分布式，云计算，集群等。对于移动端发展到最后估计只有大前端这一个方向，一统三端指日可待，当然这。</p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>个人认为技术发展到一定程度就会衍生出新的方向，比如后端高并发，分布式，云计算，集群等。对于移动端发展到最后估计只有大前端这一个方向，一统三端指日可待，当然这仅仅是表层业务逻辑上的统一。</p>
 <p>-</p>
 <h3 id="第一节–对整个Wigets有个大概认识"><a href="#第一节–对整个Wigets有个大概认识" class="headerlink" title="第一节–对整个Wigets有个大概认识"></a>第一节–对整个Wigets有个大概认识</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>在前面的介绍中，我们知道Flutter中几乎所有的对象都是一个Widget，与原生开发中“控件”不同的是，Flutter中的widget的概念更广泛，它不仅可以表示UI元素，也可以表示一些功能性的组件如：用于手势检测的 GestureDetector widget、用于应用主题数据传递的Theme等等。而原生开发中的控件通常只是指UI元素。在后面的内容中，我们在描述UI元素时，我们可能会用到“控件”、“组件”这样的概念，心里需要知道他们就是widget，只是在不同场景的不同表述而已。由于Flutter主要就是用于构建用户界面的，所以，在大多数时候，可以认为widget就是一个控件，不必纠结于概念。</p>
 <h4 id="Widget与Element"><a href="#Widget与Element" class="headerlink" title="Widget与Element"></a>Widget与Element</h4><p>在Flutter中，Widget的功能是“描述一个UI元素的配置数据”，它就是说，Widget其实并不是表示最终绘制在设备屏幕上的显示元素，而只是显示元素的一个配置数据。实际上，Flutter中真正代表屏幕上显示元素的类是Element，也就是说Widget只是描述Element的一个配置，且一个Widget可以对应多个Element，这是因为同一个Widget对象可以被添加到UI树的不同部分，而真正渲染时，UI树的每一个Element节点都会对应一个Widget对象。总结一下：</p>
