@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="杂七杂八的我">
 <meta property="og:description" content="前言好记性不如烂笔头，于是决定把最近了解到的知识点整理，以供后面及时回顾。 总结本篇博客内容：  web首屏优化体验 移动端网络优化 崩溃问题分析 电量优化问题整理 流量监控">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-21T10:40:34.144Z">
+<meta property="og:updated_time" content="2020-03-21T10:42:05.899Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="笔记整理">
 <meta name="twitter:description" content="前言好记性不如烂笔头，于是决定把最近了解到的知识点整理，以供后面及时回顾。 总结本篇博客内容：  web首屏优化体验 移动端网络优化 崩溃问题分析 电量优化问题整理 流量监控">
@@ -408,7 +408,12 @@
 <li>客户端提供web端接口，如网络请求，sqlite，客户端可提供DNS与解析/IP直连/长连接等。</li>
 </ol>
 <h3 id="移动端网络优化"><a href="#移动端网络优化" class="headerlink" title="移动端网络优化"></a>移动端网络优化</h3><blockquote>
-<p>正常的网络请求时<br>1.DNS解析，请求DNS服务器，获取域名对应的IP地址<br>2.与服务端建立连接，包括 tcp 三次握手，安全协议同步流程。<br>3.发送和接收数据，解码数据。</p>
+<p>正常的网络请求是</p>
+<ol>
+<li>DNS解析，请求DNS服务器，获取域名对应的IP地址</li>
+<li>与服务端建立连接，包括 tcp 三次握手，安全协议同步流程。</li>
+<li>发送和接收数据，解码数据。</li>
+</ol>
 </blockquote>
 <h4 id="速度"><a href="#速度" class="headerlink" title="速度"></a>速度</h4><ol>
 <li>DNS所遇到的问题：不及时，不可控，缓存，第三方劫持，每次只能解析一个域名<br>HTTPDNS 自己控制和处理</li>
