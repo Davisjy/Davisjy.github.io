@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="面试题,">
+  <meta name="keywords" content="笔记整理,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="在使用 Block 时，除了使用 __weak 修饰符避免循环引用外，还有一点经常容易忘记。苹果把它称为：“Strong-Weak Dance”。">
-<meta name="keywords" content="面试题">
+<meta name="description" content="前言好记性不如烂笔头，于是决定把最近了解到的知识点整理，以供后面及时回顾。 总结本篇博客内容：  web首屏优化体验 移动端网络优化 崩溃问题分析 电量优化问题整理 流量监控">
+<meta name="keywords" content="笔记整理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="对Strong-Weak Dance的思考">
-<meta property="og:url" content="http://yoursite.com/2019/03/25/对Strong-Weak-Dance的思考/index.html">
+<meta property="og:title" content="笔记整理">
+<meta property="og:url" content="http://yoursite.com/2020/03/21/笔记整理/index.html">
 <meta property="og:site_name" content="杂七杂八的我">
-<meta property="og:description" content="在使用 Block 时，除了使用 __weak 修饰符避免循环引用外，还有一点经常容易忘记。苹果把它称为：“Strong-Weak Dance”。">
+<meta property="og:description" content="前言好记性不如烂笔头，于是决定把最近了解到的知识点整理，以供后面及时回顾。 总结本篇博客内容：  web首屏优化体验 移动端网络优化 崩溃问题分析 电量优化问题整理 流量监控">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-01T03:13:10.544Z">
+<meta property="og:updated_time" content="2020-03-21T10:34:57.496Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="对Strong-Weak Dance的思考">
-<meta name="twitter:description" content="在使用 Block 时，除了使用 __weak 修饰符避免循环引用外，还有一点经常容易忘记。苹果把它称为：“Strong-Weak Dance”。">
+<meta name="twitter:title" content="笔记整理">
+<meta name="twitter:description" content="前言好记性不如烂笔头，于是决定把最近了解到的知识点整理，以供后面及时回顾。 总结本篇博客内容：  web首屏优化体验 移动端网络优化 崩溃问题分析 电量优化问题整理 流量监控">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/25/对Strong-Weak-Dance的思考/">
+  <link rel="canonical" href="http://yoursite.com/2020/03/21/笔记整理/">
 
 
 
 
 
-  <title>对Strong-Weak Dance的思考 | 杂七杂八的我</title>
+  <title>笔记整理 | 杂七杂八的我</title>
   
 
 
@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/25/对Strong-Weak-Dance的思考/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/21/笔记整理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Davisjy">
@@ -290,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">对Strong-Weak Dance的思考</h1>
+          <h1 class="post-title" itemprop="name headline">笔记整理</h1>
         
 
         <div class="post-meta">
@@ -302,8 +302,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-25T18:14:09+08:00">
-                2019-03-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-21T17:37:08+08:00">
+                2020-03-21
               </time>
             
 
@@ -343,8 +343,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/03/25/对Strong-Weak-Dance的思考/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/25/对Strong-Weak-Dance的思考/" itemprop="commentCount"></span>
+                <a href="/2020/03/21/笔记整理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/03/21/笔记整理/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -352,7 +352,7 @@
 
           
           
-             <span id="/2019/03/25/对Strong-Weak-Dance的思考/" class="leancloud_visitors" data-flag-title="对Strong-Weak Dance的思考">
+             <span id="/2020/03/21/笔记整理/" class="leancloud_visitors" data-flag-title="笔记整理">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -383,49 +383,84 @@
       
 
       
-        <p>在使用 Block 时，除了使用 __weak 修饰符避免循环引用外，还有一点经常容易忘记。苹果把它称为：“Strong-Weak Dance”。<a id="more"></a></p>
-<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>这是一种 强引用 –&gt; 弱引用 –&gt; 强引用 的变换过程。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">__weak typeof(self) wself = self;</span><br><span class="line">self.completionHandler = ^(NSInteger result) &#123;</span><br><span class="line">[wself.property removeObserver: wself forKeyPath:@&quot;pathName&quot;];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>这种写法可以避免循环引用，但是我们要考虑这样的问题：</p>
-<p>假设 block 被放在子线程中执行，而且执行过程中 self 在主线程被释放了。由于 wself 是一个弱引用，因此会自动变为 nil。而在 KVO 中，这会导致崩溃。</p>
-<p>解决以上问题的方法很简单，新增一行代码即可：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__weak typeof(self) wself = self;</span><br><span class="line">self.completionHandler = ^(NSInteger result) &#123;</span><br><span class="line">__strong __typeof(wself) sself = wself; // 强引用一次</span><br><span class="line">[sself.property removeObserver: sself forKeyPath:@&quot;pathName&quot;];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>这样一来，self 所指向对象的引用计数变成 2，即使主线程中的 self 因为超出作用于而释放，对象的引用计数依然为 1，避免了对象的销毁。</p>
-<h3 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h3><ol>
-<li>Q：下面这行代码，将一个弱引用的指针赋值给强引用的指针，可以起到强引用效果么？</li>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>好记性不如烂笔头，于是决定把最近了解到的知识点整理，以供后面及时回顾。</p>
+<p>总结本篇博客内容：</p>
+<ol>
+<li>web首屏优化体验</li>
+<li>移动端网络优化</li>
+<li>崩溃问题分析</li>
+<li>电量优化问题整理</li>
+<li>流量监控<a id="more"></a></li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__strong __typeof(wself) sself = wself;</span><br></pre></td></tr></table></figure>
-<p>A：会。引用计数描述的是对象而不是指针，sself强引用wself指向的那个对象，因此对象的引用计数加一。</p>
-<ol start="2">
-<li>Q：block 内部定义了sself，会不会因此强引用了 sself？</li>
-</ol>
-<p>A：不会。block只有捕获外部变量才会引用，具体原理可查看<a href="https://www.jianshu.com/p/ee9756f3d5f6" target="_blank" rel="noopener">霜神的这篇博客</a>。</p>
-<ol start="3">
-<li>Q：如果在 block 内部没有强引用，而是通过 if 判断，是不是也可以，比如这样写：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">__weak MyViewController *wself = self;</span><br><span class="line">wself.completionHandler = ^(NSInteger result) &#123;</span><br><span class="line">if (wself) &#123; // 只有当 wself 不为 nil 时，才执行以下代码</span><br><span class="line">[wself.property removeObserver: wself forKeyPath:@&quot;pathName&quot;];</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>A：不可以！考虑到多线程执行，也许在判断的时候，self 还没释放，但是执行 self 里面的代码时，就刚好释放了。</p>
-<ol start="4">
-<li>Q：那按照这个说法，block 内部强引用也没用啊。也许 block 执行以前，self 就释放了。</li>
-</ol>
-<p>A：有用！如果在 block 执行以前，self 就释放了，那么 block 的引用计数降为 0，所以自己就会被释放。这样它根本就不会被执行。另外，如果执行一个为 nil 的闭包会导致崩溃。</p>
-<ol start="5">
-<li>Q：如果在执行 block 的过程中，block 被释放了怎么办？<br>A：简单来说，block 还会继续执行，但是它捕获的指针会具有不确定的值。<a href="https://stackoverflow.com/questions/12272783/what-happens-when-a-block-is-set-to-nil-during-its-execution" target="_blank" rel="noopener">点我</a></li>
-</ol>
-<h3 id="引申面试题"><a href="#引申面试题" class="headerlink" title="引申面试题"></a>引申面试题</h3><h4 id="执行一个为nil的block为什么会崩溃"><a href="#执行一个为nil的block为什么会崩溃" class="headerlink" title="执行一个为nil的block为什么会崩溃"></a>执行一个为nil的block为什么会崩溃</h4><p>在开发时，调用闭包我们都会先if判空，但很少问为什么</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (void)doSomething:(void(^)())finished&#123;</span><br><span class="line">    NSLog(@&quot;I am doing something...&quot;);</span><br><span class="line">    if(finished)&#123;</span><br><span class="line">        finished();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>而假如再没有判空的前提下外界直接像下面这样调用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[self doSomething:nil];</span><br></pre></td></tr></table></figure>
-<p>上面的代码则会发生<strong>EXC_BAD_ACCESS</strong>崩溃信息。通常这样的崩溃原因一般就是：调用了已释放的内存空间或者重复释放某个地址空间。具体原理如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// Block在OC中的实现如下</span><br><span class="line">struct Block_layout &#123;</span><br><span class="line">    void *isa;</span><br><span class="line">    int flags;</span><br><span class="line">    int reserved;</span><br><span class="line">    void (*invoke)(void *, ...);</span><br><span class="line">    struct Block_descriptor *descriptor;</span><br><span class="line">    /* Imported variables. */</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>block是指向这个结构体的指针，invoke就是指向具体实现的函数指针。当block被调用时，程序最终会跳转到指针指向的代码区。而当block为nil时，程序会试图读取地址信息，而这个地址什么都没有，于是抛出异常。</p>
-<p>所以我们在使用block时，先去非空判断。一种优雅的方式参考<a href="http://blog.sunnyxx.com" target="_blank" rel="noopener">sunnyxx</a>的某篇博文，具体忘记了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!_block?:_block();</span><br></pre></td></tr></table></figure>
-<h4 id="给nil发消息是否会崩溃"><a href="#给nil发消息是否会崩溃" class="headerlink" title="给nil发消息是否会崩溃"></a>给nil发消息是否会崩溃</h4><p>首先，OC中向nil发消息是不会崩溃的。</p>
-<blockquote>
-<p>因为OC的函数调用都是通过objc_msgSend进行消息发送来实现的，相对于C和C++来说，对于空指针的操作会引起Crash的问题，而objc_msgSend会通过判断self来决定是否发送消息，如果self为nil，那么selector也会为空，直接返回，所以不会出现问题。视方法返回值，向nil发消息可能会返回nil(返回值为对象)、0（返回值为一些基础数据类型）或0X0（返回值为id）等。但是对[NSNull<br>null]对象发送消息时，是会crash的，因为这个NSNull类只有一个null方法。<br>当然，如果一个对象已经被释放了（引用计数为0了），那么这个时候再去调用方法肯定是会Crash的，因为这个时候这个对象就是一个野指针（指向僵尸对象（对象的引用计数为0，指针指向的内存已经不可用）的指针）了，安全的做法是释放后将对象重新置为nil，使它成为一个空指针。</p>
+<h3 id="web首屏优化体验"><a href="#web首屏优化体验" class="headerlink" title="web首屏优化体验"></a>web首屏优化体验</h3><blockquote>
+<p>相信现在大部分客户端都存在webview来支撑业务，而其中就会涉及首屏优化的体验，这是最简单的一种跨平台了，既省人力成本又快速，当然性能没有原生好，个人在去年也是写了大半年的vue，感觉前端对新人上手很快。</p>
 </blockquote>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://juejin.im/post/5a309c2751882531ba10ed9d" target="_blank" rel="noopener">bestswifter的对 Strong-Weak Dance的思考</a></p>
+<h4 id="web端做的工作"><a href="#web端做的工作" class="headerlink" title="web端做的工作"></a>web端做的工作</h4><ol>
+<li>域名尽量保持和APP一样，因为系统层面会缓存DNS解析后的ip</li>
+<li>减少请求量</li>
+<li>适当的使用缓存</li>
+<li>css和js优化，注意css和js的顺序</li>
+</ol>
+<h4 id="原生做的工作"><a href="#原生做的工作" class="headerlink" title="原生做的工作"></a>原生做的工作</h4><ol>
+<li>1) webview第一次初始化耗时较长，可在APP启动时便进行初始化 2) webview池</li>
+<li>离线包，包括资源缓存，提前加载到内存，减少静态资源的IO，包括图片和静态资源分开处理，包括可以更深的diff机制</li>
+<li>预加载数据，抽出中间层由原生代理，在初始化webview的同时，并行发起比如用户信息的请求，这样当webview发起请求时，询问原生，如果原生请求完，则返回，如果不成功则等待。</li>
+<li>客户端提供web端接口，如网络请求，sqlite，客户端可提供DNS与解析/IP直连/长连接等。</li>
+</ol>
+<h3 id="移动端网络优化"><a href="#移动端网络优化" class="headerlink" title="移动端网络优化"></a>移动端网络优化</h3><blockquote>
+<p>正常的网络请求时<br>1.DNS解析，请求DNS服务器，获取域名对应的IP地址<br>2.与服务端建立连接，包括 tcp 三次握手，安全协议同步流程。<br>3.发送和接收数据，解码数据。</p>
+</blockquote>
+<h4 id="速度"><a href="#速度" class="headerlink" title="速度"></a>速度</h4><ol>
+<li>DNS所遇到的问题：不及时，不可控，缓存，第三方劫持，每次只能解析一个域名<br>HTTPDNS 自己控制和处理</li>
+<li>连接 HTTP 2.0 多路复用和 Keep-Alive</li>
+<li>数据压缩 Protobuf，解码速度快体积小</li>
+</ol>
+<h4 id="弱网"><a href="#弱网" class="headerlink" title="弱网"></a>弱网</h4><blockquote>
+<p>如何确定弱网<br>httprtt（http Round-Trip Time）又名TTFB（Time to first byte），指从客户端请求的第一个字节开始发送到接收到http header的第一个字节的时间差。httprtt的时间如果过长，一方面是客户端本身接入网络质量的问题，另一方面是服务的延时比较大。<br>这里还是推荐看看<a href="http://www.52im.net/thread-2678-1-1.html" target="_blank" rel="noopener">百度APP分享的博客</a>。还有一篇<a href="https://www.jianshu.com/p/a470ab485e39" target="_blank" rel="noopener">集合</a>。</p>
+</blockquote>
+<ol>
+<li>提高连接成功率，梯式并发连接，其中一个连接都关闭。提高弱网下的链接成功率，又不会增加服务器的资源消耗</li>
+<li>制定合适的超时时间，及时定位，减少等待时间，加快对超时的判断，尽早重试</li>
+<li>调优TCP参数，适合移动端的业务特性和网络环境，混合慢启动等。</li>
+</ol>
+<h4 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h4><ol>
+<li>HTTPS</li>
+<li>网络传输过程中数据加解密</li>
+<li>。。。</li>
+</ol>
+<h3 id="崩溃问题分析"><a href="#崩溃问题分析" class="headerlink" title="崩溃问题分析"></a>崩溃问题分析</h3><blockquote>
+<p>一般而言有两种崩溃信息，一种是可以通过信号监听收到的，一种是不能通过信号监听收到的。对于前者一般有数组越界，子线程操作UI，kvo，野指针等。<br>对于后者多存在于，后台被杀，主线程卡顿超时，触发watchdog机制，oom。<br>在这里我们分析后者信号捕获不到的情况。mach异常到BSD转换成信号，所以可以监听信号<br>常见的几种信号，访问未知地址，比如没有权限，重复释放同一个内存，非法指令，非法地址等。</p>
+</blockquote>
+<p>####后台被杀<br>我们可以自己起一个后台任务，当然这个后台任务不宜处理大数据或大量读写操作，时间阈值是3min，所以我们可以起个定时器，快到这个时间的时候，如果APP没有挂开始记录当前线程信息或调用栈，作为最接近崩溃的环境。</p>
+<p>####主线程卡顿<br>我们这里借助runloop，runloop更为友好的线程调度，runloop主要接受两种不同类型的输入源：1)从另一个线程或另一个应用传来的消息 2)定时器重复间隔的事件。<br>方案自己启个子线程进行监控，主要是监控两个地方，即将进入休眠之前和唤醒之后，如果这两个点超过了我们设置的3s，而这3s是可以根据watchdog机制来设置。原则上10s也不为过，但是更好的监控到用户感知最明显的卡顿为佳。当触发这个事件后，通过plcrashreporter进行收集堆栈信息，因为直接获取系统的不完整。<br>(Runloop 的目的，当有事情要处理就保持线程工作，如果没有就让线程休眠，更好的提高用户体验。)</p>
+<p>####oom定位<br>可以通过腾讯开源sdk，或者灰度测试内存阈值，然后dump出所有内存信息，对象名称，对象个数，个对象的内存等。</p>
+<h3 id="电量优化问题整理"><a href="#电量优化问题整理" class="headerlink" title="电量优化问题整理"></a>电量优化问题整理</h3><blockquote>
+<p>这里不得不吐槽下，某宝真的很费电🙄</p>
+</blockquote>
+<h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><blockquote>
+<p>假如测试某天说某个页面的耗电严重，之前几个版本却好好的，并且这几个版本也没有改变</p>
+</blockquote>
+<h4 id="基本问题分析"><a href="#基本问题分析" class="headerlink" title="基本问题分析"></a>基本问题分析</h4><ol>
+<li>首先最简单最快捷的就是用排除法，注释掉相应代码进行检测</li>
+<li>如果还有问题，可能就是某个第三方或者其他线程引起的，此时可以获取每个线程的CPU使用率，通过task_threads函数可以获得所有线程信息，thread_basic_info里有记录CPU使用率的字段cpu_usage，此时检测所有线程的使用率，如果如果超过90%的话，就证明有问题，并且dump堆栈信息进行记录。</li>
+<li>尽量避免CPU做大量数据的复杂计算，尽量让服务端去处理，如果必须APP内处理，可通过GCD，专有的QOS模式，NSQualityOfServiceUtility 系统做了专门的电量优化，包括大量的网络请求</li>
+<li>再有就是I/O，模仿SDWebImage使用原生NSCache，减少I/O操作，降低能耗。如果有监听file变动的话使用原生的dispatch_source，而不是轮询去检测。</li>
+</ol>
+<h4 id="其他情况"><a href="#其他情况" class="headerlink" title="其他情况"></a>其他情况</h4><ol>
+<li>iOS9之后，iPhone增加了低电量模式，APP可监听此通知，减少一些非必须的请求或timer等情况</li>
+<li>优化定位和动作(Motion) 如果你的app只是需要快速确定一下用户的位置，最好用CLLocationManager的requestLocation (iOS9引入)方法。定位完成之后会自动让硬件断电。包括定位精度，及时停止定位等情况。用户摇晃，移动都会触发加速计、陀螺仪等硬件检测，所以不需要时及时取消</li>
+<li>蓝牙在不必要时不要扫描外设，不要轮询检测。</li>
+</ol>
+<h3 id="流量监控"><a href="#流量监控" class="headerlink" title="流量监控"></a>流量监控</h3><blockquote>
+<p>一个请求主要包含请求行，请求头，请求体，响应行，响应头，响应体。所以就需要整体监测，看了一些开源的第三方大部分只监控body，和记录body，所以我们还需要记录line 和 header</p>
+</blockquote>
+<blockquote>
+<p>这里主要是借助众所周知的 <code>NSURLProtocol</code>，主要记录实体的几个字段是，host/path type(请求还是响应) line-length header-lenth body-length 和 总length。<br>整体监控是一个套路，所以没啥好说的，主要有以下几个注意点。</p>
+</blockquote>
+<ol>
+<li>需要注意的是请求中cookie，臃肿的cookie也是消耗流量的一部分。</li>
+<li>还有gzip，我们客户端拿到的数据实际上是解压过后的数据，所以直接计算是不准确的，需要模拟gzip压缩再计算大小。</li>
+</ol>
 
       
     </div>
@@ -443,7 +478,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/面试题/" rel="tag"># 面试题</a>
+            <a href="/tags/笔记整理/" rel="tag"># 笔记整理</a>
           
         </div>
       
@@ -456,8 +491,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/22/年初的寒意/" rel="next" title="三月的寒意">
-                <i class="fa fa-chevron-left"></i> 三月的寒意
+              <a href="/2020/02/04/回顾2019/" rel="next" title="回顾2019">
+                <i class="fa fa-chevron-left"></i> 回顾2019
               </a>
             
           </div>
@@ -465,10 +500,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/01/一次闲聊引申对线程优先级的思考/" rel="prev" title="一次闲聊引申对线程优先级的思考">
-                一次闲聊引申对线程优先级的思考 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -619,7 +650,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-amp-A"><span class="nav-number">2.</span> <span class="nav-text">Q&amp;A</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引申面试题"><span class="nav-number">3.</span> <span class="nav-text">引申面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#执行一个为nil的block为什么会崩溃"><span class="nav-number">3.1.</span> <span class="nav-text">执行一个为nil的block为什么会崩溃</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#给nil发消息是否会崩溃"><span class="nav-number">3.2.</span> <span class="nav-text">给nil发消息是否会崩溃</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web首屏优化体验"><span class="nav-number">2.</span> <span class="nav-text">web首屏优化体验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#web端做的工作"><span class="nav-number">2.1.</span> <span class="nav-text">web端做的工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原生做的工作"><span class="nav-number">2.2.</span> <span class="nav-text">原生做的工作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动端网络优化"><span class="nav-number">3.</span> <span class="nav-text">移动端网络优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#速度"><span class="nav-number">3.1.</span> <span class="nav-text">速度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#弱网"><span class="nav-number">3.2.</span> <span class="nav-text">弱网</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安全"><span class="nav-number">3.3.</span> <span class="nav-text">安全</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#崩溃问题分析"><span class="nav-number">4.</span> <span class="nav-text">崩溃问题分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#电量优化问题整理"><span class="nav-number">5.</span> <span class="nav-text">电量优化问题整理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#背景"><span class="nav-number">5.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本问题分析"><span class="nav-number">5.2.</span> <span class="nav-text">基本问题分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他情况"><span class="nav-number">5.3.</span> <span class="nav-text">其他情况</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流量监控"><span class="nav-number">6.</span> <span class="nav-text">流量监控</span></a></li></ol></div>
             
 
           </div>
