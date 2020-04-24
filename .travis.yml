@@ -28,11 +28,11 @@ after_script:
   # user.name 和 user.email 让 travis 能登录你的 github
   - git config user.name "davisjy"
   - git config user.email "Davis_jy@163.com"
-  - hexo deploy
-  #- git add .
-  #- git commit -m "Travis CI Auto Builder at `date +"%Y-%m-%d %H:%M"`"
+  #- hexo deploy
+  - git add .
+  - git commit -m "Travis CI Auto Builder at `date +"%Y-%m-%d %H:%M"`"
   # GH_REF 告诉 travis 往哪个仓库推送代码，具体值下面配置
-  #- git push --force --quiet "https://${GITHUB_TOKEN}@${GH_REF}" master:master
+  - git push --force --quiet "https://${GITHUB_TOKEN}@${GH_REF}" master:master
 # E: Build LifeCycle
 
 branches:
