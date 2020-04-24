@@ -3,6 +3,9 @@ language: node_js
 node_js: stable
 
 # S: Build Lifecycle
+before_install:
+- export TZ='Asia/Shanghai'
+- npm install hexo-cli -g
 # 安装依赖包
 install:
   - npm install
@@ -17,7 +20,7 @@ after_script:
   - cd ./public
   - git init
   # user.name 和 user.email 让 travis 能登录你的 github
-  - git config user.name "Davisjy"
+  - git config user.name "davisjy"
   - git config user.email "Davis_jy@163.com"
   - git add .
   - git commit -m "docs:update articles"
