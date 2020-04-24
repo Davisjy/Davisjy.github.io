@@ -4,7 +4,6 @@ node_js: stable
 
 # S: Build Lifecycle
 before_install:
-- export TZ='Asia/Shanghai'
 - npm install hexo-cli -g
 # 安装依赖包
 install:
@@ -26,7 +25,7 @@ after_script:
   - git commit -m "docs:update articles"
   # GH_TOKEN 为你的 github 允许 travis 访问生成的凭证
   # GH_REF 告诉 travis 往哪个仓库推送代码，具体值下面配置
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+  - git push --force --quiet "https://${GITHUB_TOKEN}@${GH_REF}" master:master
 # E: Build LifeCycle
 
 branches:
