@@ -3,6 +3,10 @@ language: node_js
 node_js:
   - 10
 # node_js: stable
+cache: npm
+git:
+  depth: 1
+  submodules: true
 
 # S: Build Lifecycle
 before_install:
@@ -25,7 +29,7 @@ after_script:
   - git config user.name "davisjy"
   - git config user.email "Davis_jy@163.com"
   - git add .
-  - git commit -m "docs:update articles"
+  - git commit -m "blog:update articles"
   # GH_REF 告诉 travis 往哪个仓库推送代码，具体值下面配置
   - git push --force --quiet "https://${GITHUB_TOKEN}@${GH_REF}" master:master
 # E: Build LifeCycle
