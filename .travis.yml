@@ -34,4 +34,3 @@ env:
   global:
     # 定义往哪个仓库推送代码，注意事项见下面
     - GH_REF: github.com/Davisjy/Davisjy.github.io.git
-    - GH_TOKEN: 38845a8f84f50f5497a3a9840c09d6a35c984735
