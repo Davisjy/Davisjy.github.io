@@ -1,6 +1,8 @@
 # 运行环境，Travis 会自动提供这个环境
 language: node_js
-node_js: stable
+node_js:
+  - 10
+# node_js: stable
 
 # S: Build Lifecycle
 before_install:
