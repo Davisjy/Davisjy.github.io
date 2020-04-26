@@ -1,7 +1,7 @@
 # 运行环境，Travis 会自动提供这个环境
 language: node_js
 node_js:
-  - 10
+  - 11.12.0
 # node_js: stable
 cache: npm
 git:
