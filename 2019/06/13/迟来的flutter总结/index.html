@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Flutter初体验,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言本篇是个人在公司分享Flutter的内容，在此搬到博客上">
+<meta name="keywords" content="Flutter初体验">
+<meta property="og:type" content="article">
+<meta property="og:title" content="迟来的Flutter总结">
+<meta property="og:url" content="http://yoursite.com/2019/06/13/迟来的flutter总结/index.html">
+<meta property="og:site_name" content="杂七杂八的我">
+<meta property="og:description" content="前言本篇是个人在公司分享Flutter的内容，在此搬到博客上">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-06-25T07:59:06.851Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="迟来的Flutter总结">
+<meta name="twitter:description" content="前言本篇是个人在公司分享Flutter的内容，在此搬到博客上">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/06/13/迟来的flutter总结/">
+
+
+
+
+
+  <title>迟来的Flutter总结 | 杂七杂八的我</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ed3675f0938fc17d62f299c67abf7950";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杂七杂八的我</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/13/迟来的flutter总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Davisjy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杂七杂八的我">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">迟来的Flutter总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-13T10:32:35+00:00">
+                2019-06-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Flutter/" itemprop="url" rel="index">
+                    <span itemprop="name">Flutter</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/13/迟来的flutter总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/13/迟来的flutter总结/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/06/13/迟来的flutter总结/" class="leancloud_visitors" data-flag-title="迟来的Flutter总结">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>本篇是个人在公司分享Flutter的内容，在此搬到博客上<a id="more"></a></p>
+<h3 id="Flutter介绍"><a href="#Flutter介绍" class="headerlink" title="Flutter介绍"></a>Flutter介绍</h3><blockquote>
+<p>Flutter是Google发布的一个用于创建跨平台、高性能移动应用的框架。Flutter和QT mobile一样，都没有使用原生控件，相反都实现了一个自绘引擎，使用自身的布局、绘制系统。那么，我们会担心，QT mobile面对的问题Flutter是否也一样，Flutter会不会步入QT mobile后尘，成为另一个烈士？要回到这个问题，我们先来看看Flutter诞生过程：</p>
+</blockquote>
+<blockquote>
+<p>2017 年 Google I/O 大会上，Google 首次推出了一款新的用于创建跨平台、高性能的移动应用框架——<a href="https://github.com/flutter/flutter" target="_blank" rel="noopener">Flutter</a>。<br>2018年2月，Flutter发布了第一个Beta版本，同年五月， 在2018年Google I/O 大会上，Flutter 更新到了 beta 3 版本。<br>2018年6月，Flutter发布了首个预览版本，这意味着 Flutter 进入了正式版（1.0）发布前的最后阶段。<br>观其发展，在2018年5月份，Flutter 进入了 GitHub stars 排行榜前 100 名，已有 27k star。而今天(2019年6月10日)，已经有66K+的Star。经历了短短2年多的时间，Flutter 生态系统得以快速增长，由此可见，Flutter在开发者中受到了热烈的欢迎，其未来发展值得期待！</p>
+</blockquote>
+<h4 id="生态及社区"><a href="#生态及社区" class="headerlink" title="生态及社区"></a>生态及社区</h4><p>从Github上来看，目前Flutter活跃用户正在高速增长。从Stackoverflow上提问来看，Flutter社区现在已经很庞大。Flutter的文档、资源也越来越丰富，开发过程中遇到的很多问题都可以在Stackoverflow或其github issue中找到答案。在掘金上，Flutter 标签下有 2300 多篇文章；闲鱼团队也在主推 Flutter。关注社区的活跃度其实就是想知道会不会在短期内挂掉，从目前的状况看，我觉得可能性比较小，而它被另一个同类产品 PK 掉的可能性则更小，因此值得投入时间去了解它。</p>
+<h4 id="技术支持"><a href="#技术支持" class="headerlink" title="技术支持"></a>技术支持</h4><p>现在Google正在大力推广Flutter，Flutter的作者中很多人都是来自Chromium团队，并且github上活跃度很高。另一个角度，从今年上半年Flutter频繁的版本发布也可以看出Google对Flutter的投入的资源不小，所以在官方技术支持这方面，大可不必担心。</p>
+<h4 id="开发效率"><a href="#开发效率" class="headerlink" title="开发效率"></a>开发效率</h4><p>Flutter的热重载可帮助开发者快速地进行测试、构建UI、添加功能并更快地修复错误。在iOS和Android模拟器或真机上可以实现毫秒级热重载，并且不会丢失状态。</p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>个人认为技术发展到一定程度就会衍生出新的方向，比如后端高并发，分布式，云计算，集群等。对于移动端发展到最后估计只有大前端这一个方向，一统三端指日可待，当然这仅仅是表层业务逻辑上的统一。</p>
+<p>-</p>
+<h3 id="第一节–对整个Wigets有个大概认识"><a href="#第一节–对整个Wigets有个大概认识" class="headerlink" title="第一节–对整个Wigets有个大概认识"></a>第一节–对整个Wigets有个大概认识</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>在前面的介绍中，我们知道Flutter中几乎所有的对象都是一个Widget，与原生开发中“控件”不同的是，Flutter中的widget的概念更广泛，它不仅可以表示UI元素，也可以表示一些功能性的组件如：用于手势检测的 GestureDetector widget、用于应用主题数据传递的Theme等等。而原生开发中的控件通常只是指UI元素。在后面的内容中，我们在描述UI元素时，我们可能会用到“控件”、“组件”这样的概念，心里需要知道他们就是widget，只是在不同场景的不同表述而已。由于Flutter主要就是用于构建用户界面的，所以，在大多数时候，可以认为widget就是一个控件，不必纠结于概念。</p>
+<h4 id="Widget与Element"><a href="#Widget与Element" class="headerlink" title="Widget与Element"></a>Widget与Element</h4><p>在Flutter中，Widget的功能是“描述一个UI元素的配置数据”，它就是说，Widget其实并不是表示最终绘制在设备屏幕上的显示元素，而只是显示元素的一个配置数据。实际上，Flutter中真正代表屏幕上显示元素的类是Element，也就是说Widget只是描述Element的一个配置，且一个Widget可以对应多个Element，这是因为同一个Widget对象可以被添加到UI树的不同部分，而真正渲染时，UI树的每一个Element节点都会对应一个Widget对象。总结一下：</p>
+<blockquote>
+<ol>
+<li>Widget实际上就是Element的配置数据，Widget树实际上是一个配置树，而真正的UI渲染树是由Element构成；不过，由于Element是通过Widget生成，所以它们之间有对应关系，所以在大多数场景，我们可以宽泛地认为Widget树就是指UI控件树或UI渲染树</li>
+<li>一个Widget对象可以对应多个Element对象。这很好理解，根据同一份配置（Widget），可以创建多个实例（Element）</li>
+</ol>
+</blockquote>
+<h5 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">@immutable</span><br><span class="line">abstract class Widget extends DiagnosticableTree &#123;</span><br><span class="line">  const Widget(&#123; this.key &#125;);</span><br><span class="line">  final Key key;</span><br><span class="line"></span><br><span class="line">  @protected</span><br><span class="line">  Element createElement();</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  String toStringShort() &#123;</span><br><span class="line">    return key == null ? &apos;$runtimeType&apos; : &apos;$runtimeType-$key&apos;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  void debugFillProperties(DiagnosticPropertiesBuilder properties) &#123;</span><br><span class="line">    super.debugFillProperties(properties);</span><br><span class="line">    properties.defaultDiagnosticsTreeStyle = DiagnosticsTreeStyle.dense;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  static bool canUpdate(Widget oldWidget, Widget newWidget) &#123;</span><br><span class="line">    return oldWidget.runtimeType == newWidget.runtimeType</span><br><span class="line">        &amp;&amp; oldWidget.key == newWidget.key;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Widget类继承自DiagnosticableTree，DiagnosticableTree即“诊断树”，主要作用是提供调试信息。</li>
+<li>Key: 这个key属性类似于React/Vue中的key，主要的作用是决定是否在下一次build时复用旧的widget，决定的条件在canUpdate()方法中。</li>
+<li>createElement()：正如前文所述“一个Widget可以对应多个Element”；Flutter Framework在构建UI树时，会先调用此方法生成对应节点的Element对象。此方法是Flutter Framework隐式调用的，在我们开发过程中基本不会调用到。</li>
+<li>debugFillProperties(…) 复写父类的方法，主要是设置诊断树的一些特性。</li>
+<li>canUpdate(…)是一个静态方法，它主要用于在Widget树重新build时复用旧的widget，其实具体来说，应该是：是否用新的Widget对象去更新旧UI树上所对应的Element对象的配置；通过其源码我们可以看到，只要newWidget与oldWidget的runtimeType和key同时相等时就会用newWidget去更新Element对象的配置，否则就会创建新的Element。</li>
+</ul>
+<h4 id="Widgets"><a href="#Widgets" class="headerlink" title="Widgets"></a>Widgets</h4><p>介绍一下Flutter中常用的一些基础widget，由于大多数widget的属性都比较多，分享会为了不占用太多时间，不会像API文档一样所有属性都介绍，关于属性详细的信息可下去自行参考Flutter SDK文档。</p>
+<h5 id="基础Widget"><a href="#基础Widget" class="headerlink" title="基础Widget"></a>基础Widget</h5><ul>
+<li>文本、字体样式 <strong>Text</strong></li>
+<li>按钮 <strong>RaisedButton</strong> <strong>FlatButton</strong> <strong>IconButton</strong> </li>
+<li>图片和Icon <strong>Image</strong> <strong>Icon</strong></li>
+<li>单选框和复选框 <strong>Switch</strong> <strong>Checkbox</strong></li>
+<li>输入框和表单 <strong>TextField</strong></li>
+</ul>
+<h5 id="布局类Widget"><a href="#布局类Widget" class="headerlink" title="布局类Widget"></a>布局类Widget</h5><ul>
+<li>线性布局 <strong>Row</strong> <strong>Column</strong></li>
+<li>弹性布局 <strong>Flex</strong></li>
+<li>流式布局 <strong>Wrap</strong> <strong>Flow</strong></li>
+<li>层叠布局 <strong>Stack</strong> <strong>Positioned</strong></li>
+</ul>
+<h5 id="容器类Widget"><a href="#容器类Widget" class="headerlink" title="容器类Widget"></a>容器类Widget</h5><ul>
+<li><strong>Padding</strong></li>
+<li>布局限制类容器 <strong>ConstrainedBox</strong> <strong>SizeBox</strong></li>
+<li>装饰容器 <strong>DecoratedBox</strong></li>
+<li>变换 <strong>Transform</strong></li>
+<li><strong>Container</strong> 容器</li>
+<li><strong>Scaffold</strong> <strong>TabBar</strong> <strong>底部导航</strong></li>
+</ul>
+<h5 id="可滚动Widget"><a href="#可滚动Widget" class="headerlink" title="可滚动Widget"></a>可滚动Widget</h5><ul>
+<li><strong>SingleChildScrollView</strong></li>
+<li><strong>ListView</strong></li>
+<li><strong>GridView</strong></li>
+<li><strong>CustomScrollView</strong></li>
+<li>滚动监听及控制 <strong>ScrollController</strong></li>
+</ul>
+<p>-</p>
+<h3 id="第二节–State生命周期"><a href="#第二节–State生命周期" class="headerlink" title="第二节–State生命周期"></a>第二节–State生命周期</h3><ul>
+<li>initState：当Widget第一次插入到Widget树时会被调用，对于每一个State对象，Flutter framework只会调用一次该回调，所以，通常在该回调中做一些一次性的操作，如状态初始化、订阅子树的事件通知等。不能在该回调中调用BuildContext.inheritFromWidgetOfExactType（该方法用于在Widget树上获取离当前widget最近的一个父级InheritFromWidget，原因是在初始化完成后，Widget树中的InheritFromWidget也可能会发生变化，所以正确的做法应该在在build（）方法或didChangeDependencies()中调用它。</li>
+<li>didChangeDependencies()：当State对象的依赖发生变化时会被调用；例如：在之前build() 中包含了一个InheritedWidget，然后在之后的build() 中InheritedWidget发生了变化，那么此时InheritedWidget的子widget的didChangeDependencies()回调都会被调用。典型的场景是当系统语言Locale或应用主题改变时，Flutter framework会通知widget调用此回调。</li>
+<li><p>build()：此回调读者现在应该已经相当熟悉了，它主要是用于构建Widget子树的，会在如下场景被调用：</p>
+<ol>
+<li>在调用initState()之后。</li>
+<li>在调用didUpdateWidget()之后。</li>
+<li>在调用setState()之后。</li>
+<li>在调用didChangeDependencies()之后。</li>
+<li>在State对象从树中一个位置移除后（会调用deactivate）又重新插入到树的其它位置之后。</li>
+</ol>
+</li>
+<li><p>reassemble()：此回调是专门为了开发调试而提供的，在热重载(hot reload)时会被调用，此回调在Release模式下永远不会被调用。</p>
+</li>
+<li>didUpdateWidget()：在widget重新构建时，Flutter framework会调用Widget.canUpdate来检测Widget树中同一位置的新旧节点，然后决定是否需要更新，如果Widget.canUpdate返回true则会调用此回调。正如之前所述，Widget.canUpdate会在新旧widget的key和runtimeType同时相等时会返回true，也就是说在在新旧widget的key和runtimeType同时相等时didUpdateWidget()就会被调用。</li>
+<li>deactivate()：当State对象从树中被移除时，会调用此回调。在一些场景下，Flutter framework会将State对象重新插到树中，如包含此State对象的子树在树的一个位置移动到另一个位置时（可以通过GlobalKey来实现）。如果移除后没有重新插入到树中则紧接着会调用dispose()方法。</li>
+<li>dispose()：当State对象从树中被永久移除时调用；通常在此回调中释放资源。</li>
+</ul>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p>通过一个demo来演示一下State的生命周期。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class CounterWidget extends StatefulWidget &#123;</span><br><span class="line">  const CounterWidget(&#123;</span><br><span class="line">    Key key,</span><br><span class="line">    this.initValue: 0</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  final int initValue;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  _CounterWidgetState createState() =&gt; new _CounterWidgetState();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">class _CounterWidgetState extends State&lt;CounterWidget&gt; &#123;  </span><br><span class="line">  int _counter;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  void initState() &#123;</span><br><span class="line">    super.initState();</span><br><span class="line">    //初始化状态  </span><br><span class="line">    _counter=widget.initValue;</span><br><span class="line">    print(&quot;initState&quot;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    print(&quot;build&quot;);</span><br><span class="line">    return Scaffold(</span><br><span class="line">      body: Center(</span><br><span class="line">        child: FlatButton(</span><br><span class="line">          child: Text(&apos;$_counter&apos;),</span><br><span class="line">          //点击后计数器自增</span><br><span class="line">          onPressed:()=&gt;setState(()=&gt; ++_counter,</span><br><span class="line">          ),</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  void didUpdateWidget(CounterWidget oldWidget) &#123;</span><br><span class="line">    super.didUpdateWidget(oldWidget);</span><br><span class="line">    print(&quot;didUpdateWidget&quot;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  void deactivate() &#123;</span><br><span class="line">    super.deactivate();</span><br><span class="line">    print(&quot;deactive&quot;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  void dispose() &#123;</span><br><span class="line">    super.dispose();</span><br><span class="line">    print(&quot;dispose&quot;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  void reassemble() &#123;</span><br><span class="line">    super.reassemble();</span><br><span class="line">    print(&quot;reassemble&quot;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  void didChangeDependencies() &#123;</span><br><span class="line">    super.didChangeDependencies();</span><br><span class="line">    print(&quot;didChangeDependencies&quot;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>-</p>
+<h3 id="第三节–学习路线"><a href="#第三节–学习路线" class="headerlink" title="第三节–学习路线"></a>第三节–学习路线</h3><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>作为前端程序员，能够一眼看到自己写出来的效果是非常有成就感并且会提升兴趣，所以在学习完一系列基础widget就可以搭界面了。</p>
+<h5 id="17个demo"><a href="#17个demo" class="headerlink" title="17个demo"></a>17个demo</h5><p>在此找到了<a href="https://juejin.im/user/5875dfc7a22b9d0058a96d06" target="_blank" rel="noopener">JSPang</a>的博客，本质是录视频供初学者学习，在此千万不要看视频，浪费时间，不如找个开源项目自己动手敲一遍。</p>
+<h4 id="最后说一下我的学习路线"><a href="#最后说一下我的学习路线" class="headerlink" title="最后说一下我的学习路线"></a>最后说一下我的学习路线</h4><blockquote>
+<p>首先<a href="https://flutterchina.club" target="_blank" rel="noopener">官方文档</a>是 <strong>一定</strong> 要过一遍的，发现Dart是新语言，不要慌。据了解，掌握JS/Java/Swift/Kotlin这些语言的开发者基本无压力，当然也有个别语法不一样，我也找到真丶深红骑士的Flutter学习之<a href="https://juejin.im/post/5c44727df265da611c274087" target="_blank" rel="noopener">Dart语法特性</a>供大家快速掌握Dart语言。内容太多，可在需要时自行查阅。</p>
+</blockquote>
+<p>天真的以为能够动手写项目了，还不够， <strong>重点</strong> 学习一系列状态管理</p>
+<ol>
+<li><a href="https://juejin.im/post/5b97fa0d5188255c5546dcf8" target="_blank" rel="noopener">Scoped Model</a></li>
+<li><a href="https://juejin.im/post/5ba26c086fb9a05ce57697da" target="_blank" rel="noopener">Redux</a></li>
+<li><a href="https://juejin.im/post/5bb6f344f265da0aa664d68a" target="_blank" rel="noopener">BLoC</a></li>
+<li><a href="https://juejin.im/post/5bcea438e51d4536c65d2232" target="_blank" rel="noopener">RxDart</a></li>
+</ol>
+<p>如果这四篇博客看完，对状态管理就有了基本认识，后续rx系列高级语法可以自行深究</p>
+<p>-</p>
+<h3 id="第四节–杂七杂八的总结"><a href="#第四节–杂七杂八的总结" class="headerlink" title="第四节–杂七杂八的总结"></a>第四节–杂七杂八的总结</h3><h4 id="IDE选择"><a href="#IDE选择" class="headerlink" title="IDE选择"></a>IDE选择</h4><p>Android studio 和 VSCode各有千秋，之前用过哪个就用哪个。</p>
+<h4 id="个人对大前端方向的看法"><a href="#个人对大前端方向的看法" class="headerlink" title="个人对大前端方向的看法"></a>个人对大前端方向的看法</h4><p>无论是之前的 <code>RN</code>\ <code>Weex</code>，还是如今的<code>Flutter</code>，都是衍生品亦或说是替代品，技术驱动学习，不然总会被淘汰。</p>
+<p>项目不在多，基础是根基，深入源码才是硬道理。</p>
+<p>最后感谢社区，感谢开源精神。</p>
+<h4 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h4><p><a href="https://book.flutterchina.club/chapter14/render_object.html" target="_blank" rel="noopener">Flutter中文网</a> 鼎力推荐⭐️⭐️⭐️⭐️⭐️</p>
+<p><a href="https://flutter-app-in-action.netlify.com/#/get-start" target="_blank" rel="noopener">Flutter 跨平台移动应用开发实战</a></p>
+<p><a href="https://guoshuyu.cn/home/wx/" target="_blank" rel="noopener">GSYFlutterBook实战详解系列</a></p>
+<p><a href="https://juejin.im/post/5ca2152f6fb9a05e1a7a9a26" target="_blank" rel="noopener">Flutter | 深入浅出Key</a></p>
+<p><a href="https://www.jianshu.com/u/cf5c0e4b1111" target="_blank" rel="noopener">咸鱼技术</a></p>
+<p><a href="https://flutter-io.cn" target="_blank" rel="noopener">Flutter中文社区</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Flutter初体验/" rel="tag"># Flutter初体验</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/11/生活小纪/" rel="next" title="生活小纪">
+                <i class="fa fa-chevron-left"></i> 生活小纪
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/04/回顾2019/" rel="prev" title="回顾2019">
+                回顾2019 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Davisjy</p>
+              <p class="site-description motion-element" itemprop="description">从今天起(19.3.22)开始记录博客之旅，目标进入独角兽，加油💪</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/davisjy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:Davis_jy@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flutter介绍"><span class="nav-number">2.</span> <span class="nav-text">Flutter介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生态及社区"><span class="nav-number">2.1.</span> <span class="nav-text">生态及社区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#技术支持"><span class="nav-number">2.2.</span> <span class="nav-text">技术支持</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开发效率"><span class="nav-number">2.3.</span> <span class="nav-text">开发效率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小结"><span class="nav-number">2.4.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第一节–对整个Wigets有个大概认识"><span class="nav-number">3.</span> <span class="nav-text">第一节–对整个Wigets有个大概认识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念"><span class="nav-number">3.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Widget与Element"><span class="nav-number">3.2.</span> <span class="nav-text">Widget与Element</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#源码"><span class="nav-number">3.2.1.</span> <span class="nav-text">源码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Widgets"><span class="nav-number">3.3.</span> <span class="nav-text">Widgets</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基础Widget"><span class="nav-number">3.3.1.</span> <span class="nav-text">基础Widget</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#布局类Widget"><span class="nav-number">3.3.2.</span> <span class="nav-text">布局类Widget</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#容器类Widget"><span class="nav-number">3.3.3.</span> <span class="nav-text">容器类Widget</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#可滚动Widget"><span class="nav-number">3.3.4.</span> <span class="nav-text">可滚动Widget</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二节–State生命周期"><span class="nav-number">4.</span> <span class="nav-text">第二节–State生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例"><span class="nav-number">4.1.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三节–学习路线"><span class="nav-number">5.</span> <span class="nav-text">第三节–学习路线</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#背景"><span class="nav-number">5.1.</span> <span class="nav-text">背景</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#17个demo"><span class="nav-number">5.1.1.</span> <span class="nav-text">17个demo</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最后说一下我的学习路线"><span class="nav-number">5.2.</span> <span class="nav-text">最后说一下我的学习路线</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四节–杂七杂八的总结"><span class="nav-number">6.</span> <span class="nav-text">第四节–杂七杂八的总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#IDE选择"><span class="nav-number">6.1.</span> <span class="nav-text">IDE选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#个人对大前端方向的看法"><span class="nav-number">6.2.</span> <span class="nav-text">个人对大前端方向的看法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#致谢"><span class="nav-number">6.3.</span> <span class="nav-text">致谢</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Davisjy</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '0kdDX7x39qUbbvNkUJ3f2ApU-gzGzoHsz',
+        appKey: 'dNBC251jkgNUYLxSIDyH9C1x',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("0kdDX7x39qUbbvNkUJ3f2ApU-gzGzoHsz", "dNBC251jkgNUYLxSIDyH9C1x");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
